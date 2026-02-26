@@ -1,6 +1,6 @@
 .hero {
     height: 100vh;
-    background-image: url('assets/background.png');
+    background-image: url('background.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Ini yang bikin background diam */
@@ -24,4 +24,5 @@
 .delay-1 { animation-delay: 0.5s; }
 .delay-2 { animation-delay: 1s; }
 .delay-3 { animation-delay: 1.5s; }
+
 .delay-4 { animation-delay: 2s; }
