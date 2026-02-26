@@ -63,7 +63,6 @@ p {
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     
     /* GABUNGAN ANIMASI: 
        1. Muncul (fadeInUp) selama 1.2 detik 
@@ -117,6 +116,7 @@ p {
 .delay-2 { animation-delay: 1.5s; }
 .delay-3 { animation-delay: 2.5s; }
 /* Catatan: Tombol (delay-4) sudah tidak perlu class ini karena sudah masuk ke dalam .btn di atas */
+
 
 
 
