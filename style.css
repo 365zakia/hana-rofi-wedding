@@ -116,8 +116,59 @@ p {
 .delay-3 { animation-delay: 2.5s; }
 /* Catatan: Tombol (delay-4) sudah tidak perlu class ini karena sudah masuk ke dalam .btn di atas */
 
+/* Sembunyikan halaman kedua di awal */
+.hidden {
+    display: none !important;
+}
 
+.main-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f9f9f9; /* atau pakai bg-putih.png */
+    overflow: hidden;
+    text-align: center;
+}
 
+/* Animasi Bunga Atas */
+.anim-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(-100%); /* Mulai dari luar layar atas */
+    transition: transform 1.5s ease-out;
+}
+
+/* Animasi Bunga Bawah & Karakter */
+.anim-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(100%); /* Mulai dari luar layar bawah */
+    transition: transform 1.5s ease-out;
+}
+
+/* Kelas untuk memicu jalannya animasi */
+.show-anim .anim-top, 
+.show-anim .anim-bottom {
+    transform: translateY(0);
+}
+
+/* Tulisan Hana & Rofi Halaman 2 */
+.title-page {
+    font-family: 'Great Vibes', cursive;
+    font-size: 45px;
+    color: #5d467c;
+    margin-top: 120px;
+    opacity: 0;
+    transition: opacity 1s ease 1s; /* Muncul belakangan */
+}
+
+.show-anim .title-page {
+    opacity: 1;
+}
 
 
 
