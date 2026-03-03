@@ -1,4 +1,4 @@
-/* Import font cadangan jika link di HTML bermasalah */
+/* --- RESET & BASE --- */
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap');
 
 body, html {
@@ -8,50 +8,33 @@ body, html {
     scroll-behavior: smooth;
 }
 
+/* --- HALAMAN 1: HERO/COVER --- */
 .hero {
     height: 100vh;
     width: 100%;
-    /* Mengambil gambar background.png yang sejajar dengan file css */
     background-image: url('background.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Background diam saat di-scroll */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 
-/* Container: Kita tambah margin-bottom agar posisi teks terdorong ke atas */
 .content {
     max-width: 80%;
     z-index: 1;
-    margin-bottom: 85px; /* Ubah angka ini: semakin besar, teks semakin naik ke atas */
+    margin-bottom: 85px;
 }
 
-/* Styling Tulisan "Hana & Rofi" */
-h1 {
+.nama {
     font-family: 'Great Vibes', cursive;
     color: #5d467c;
-    /* Kita kunci ukurannya agar pas dengan bingkai putih di desainmu */
-    font-size: 60px; 
-    margin: 15px 0; /* Mengurangi jarak atas bawah agar lebih rapat */
+    font-size: 60px;
+    margin: 15px 0;
     font-weight: normal;
 }
 
-/* Styling Teks Pendukung */
-p {
-    font-family: 'Montserrat', sans-serif;
-    color: #5d467c;
-    font-size: 11px; /* Sedikit lebih kecil agar elegan */
-    letter-spacing: 2px;
-    line-height: 1.6;
-    font-weight: 400;
-    text-transform: uppercase;
-    margin: 0; /* Menghapus margin bawaan browser agar jaraknya presisi */
-}
-
-/* Styling Tombol Buka Undangan */
 .btn {
     margin-top: 45px;
     padding: 12px 30px;
@@ -63,63 +46,11 @@ p {
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    
-    /* GABUNGAN ANIMASI: 
-       1. Muncul (fadeInUp) selama 1.2 detik 
-       2. fadeInUp muncul setelah 3.5 detik (setelah teks "Mengundang Anda..." selesai)
-       pulse-animation mulai berdenyut setelah 4.7 detik (3.5s delay + 1.2s durasi muncul) */
-    animation: fadeInUp 1.2s ease 3.5s forwards, 
-               pulse-animation 2s infinite 4.7s;
-    opacity: 0; /* Awalnya transparan sebelum muncul */
-}
-
-.btn:hover {
-    background-color: #76793f;
-}
-
-/* --- DAFTAR ANIMASI --- */
-
-/* Animasi Muncul dari Atas */
-@keyframes fadeInUp {
-    from { 
-        opacity: 0; 
-        transform: translateY(-30px); 
-    }
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
-    }
-}
-
-/* Animasi Berdenyut */
-@keyframes pulse-animation {
-    0% {
-        transform: scale(1);
-    }
-    70% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-/* Class pembantu untuk teks lainnya */
-.animate-fade {
     opacity: 0;
-    animation: fadeInUp 1.2s ease forwards;
+    animation: fadeInUp 1.2s ease 3.5s forwards, pulse-animation 2s infinite 4.7s;
 }
 
-/* Jeda waktu muncul satu per satu */
-.delay-1 { animation-delay: 0.5s; }
-.delay-2 { animation-delay: 1.5s; }
-.delay-3 { animation-delay: 2.5s; }
-/* Catatan: Tombol (delay-4) sudah tidak perlu class ini karena sudah masuk ke dalam .btn di atas */
-
-/* --- BAGIAN HALAMAN KEDUA --- */
-/* --- PERBAIKAN TOTAL HALAMAN KEDUA (STUCK DI BAWAH) --- */
-
-/* Sembunyikan halaman kedua di awal */
+/* --- HALAMAN 2: MAIN CONTENT --- */
 .hidden {
     display: none !important;
 }
@@ -127,98 +58,88 @@ p {
 .main-page {
     position: relative;
     width: 100%;
-    min-height: 100vh;
-    background-color: #ffffff; /* Background putih bersih */
-    overflow: hidden; /* Supaya elemen yang meluncur nggak kelihatan di luar layar */
+    height: 100vh;
+    background-color: #ffffff;
+    overflow: hidden;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-/* --- Pengaturan Gambar Dekorasi --- */
-
-/* 1. Bunga Atas: Lebar penuh, nempel di paling atas */
+/* Bunga Atas */
 .deco-top {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: auto;
     z-index: 1;
-    transform: translateY(-100%); /* Awalnya di luar layar atas */
+    transform: translateY(-100%);
     transition: transform 1.5s ease-out;
 }
-/* 2. Bunga Bawah & Karakter: Container utama yang nempel di bawah */
-.char-container {
-    position: absolute;
-    bottom: 0; /* Mengunci posisi di dasar */
-    left: 0;
-    width: 100%;
-    height: 50vh; /* Sesuaikan tinggi bunga+karakter (50% dari tinggi layar) */
-    display: flex;
-    justify-content: center;
-    align-items: flex-end; 
-    z-index: 1;
-    overflow: hidden; /* Tambahan: agar tidak meluber keluar */
-    
-    /* Mulai dari bawah layar (sembunyi) */
-    transform: translateY(100%); 
-    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1); /* Transisi lebih halus */
-}
 
-/* 3. Gambar Karakter: Pastikan dia memenuhi container tapi tidak keluar */
-.char-img {
-    height: 100%; 
-    width: auto;
-    object-fit: contain; /* Menjaga proporsi gambar */
-    display: block;
-}
-
-/* --- TRIGGER ANIMASI SAAT KLIK --- */
-/* Saat class show-anim muncul, container hanya bergerak ke posisi 0 (dasar layar) */
-.show-anim .anim-bottom {
-    transform: translateY(0) !important; 
-}
-
-/* --- Pengaturan Teks --- */
-
-/* Kontainer Teks Nama & Tanggal: Beri jarak dari atas agar di tengah */
+/* Container Teks Halaman 2 */
 .inner-content {
     position: relative;
-    z-index: 2; /* Di atas bunga */
-    padding-top: 20vh; /* Jarak agar teks di posisi tengah atas */
-    width: 80%;
+    padding-top: 15vh; /* Jarak teks dari atas */
+    z-index: 2;
 }
 
-/* Styling Nama & Tanggal di Halaman 2 */
 .title-page {
     font-family: 'Great Vibes', cursive;
-    font-size: 50px;
+    font-size: 55px;
     color: #5d467c;
-    margin: 0;
-    opacity: 0;
-    transition: opacity 1s ease 1s;
+    margin-bottom: 10px;
 }
 
 .date-page {
     font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    letter-spacing: 4px;
+    font-weight: 600;
     color: #5d467c;
-    margin-top: 10px;
-    opacity: 0;
-    transition: opacity 1s ease 1.5s;
+    letter-spacing: 3px;
 }
 
-/* --- TRIGGER ANIMASI SAAT KLIK (Tidak Berubah) --- */
+/* Bunga Bawah & Karakter (YANG STUCK DI BAWAH) */
+.char-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 55vh; /* Membatasi tinggi agar tidak naik ke atas teks */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Memaksa gambar nempel lantai */
+    z-index: 1;
+    transform: translateY(100%); /* Mulai dari luar layar bawah */
+    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.char-img {
+    height: 100%; /* Mengikuti tinggi container (55vh) */
+    width: auto;
+    object-fit: contain;
+}
+
+/* --- ANIMASI --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-animation {
+    0% { transform: scale(1); }
+    70% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.animate-fade {
+    opacity: 0;
+    animation: fadeInUp 1.2s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.5s; }
+.delay-2 { animation-delay: 1.5s; }
+.delay-3 { animation-delay: 2.5s; }
+
+/* Trigger saat tombol diklik */
 .show-anim .anim-top, 
 .show-anim .anim-bottom {
     transform: translateY(0);
 }
-
-.show-anim .title-page, 
-.show-anim .date-page {
-    opacity: 1;
-}
-
