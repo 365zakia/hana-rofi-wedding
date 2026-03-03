@@ -55,16 +55,22 @@ body, html {
     display: none !important;
 }
 
+/* --- PERBAIKAN TOTAL: KUNCI POSISI --- */
+
 .main-page {
     position: relative;
     width: 100%;
     height: 100vh;
     background-color: #ffffff;
     overflow: hidden;
-    text-align: center;
+    /* Gunakan Flexbox untuk mengatur urutan vertikal */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ini akan memaksa konten atas ke atas, bawah ke bawah */
+    align-items: center;
 }
 
-/* Bunga Atas */
+/* 1. Bunga Atas - Tetap Absolute karena dia nempel di pojok */
 .deco-top {
     position: absolute;
     top: 0;
@@ -75,71 +81,39 @@ body, html {
     transition: transform 1.5s ease-out;
 }
 
-/* Container Teks Halaman 2 */
+/* 2. Kontainer Teks - Kita buat dia punya margin agar di tengah-tengah */
 .inner-content {
-    position: relative;
-    padding-top: 15vh; /* Jarak teks dari atas */
+    margin-top: 100px; /* Jarak dari bunga atas */
     z-index: 2;
+    flex-grow: 1; /* Mengambil sisa ruang di tengah */
 }
 
-.title-page {
-    font-family: 'Great Vibes', cursive;
-    font-size: 55px;
-    color: #5d467c;
-    margin-bottom: 10px;
-}
-
-.date-page {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    color: #5d467c;
-    letter-spacing: 3px;
-}
-
-/* Bunga Bawah & Karakter (YANG STUCK DI BAWAH) */
+/* 3. Bunga Bawah & Karakter - KITA KUNCI MATI DI SINI */
 .char-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
-    height: 55vh; /* Membatasi tinggi agar tidak naik ke atas teks */
+    height: 45vh; /* Jangan lebih dari setengah layar */
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Memaksa gambar nempel lantai */
-    z-index: 1;
-    transform: translateY(100%); /* Mulai dari luar layar bawah */
-    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+    align-items: flex-end; /* Memaksa gambar nempel ke paling bawah container */
+    
+    /* Animasi meluncur */
+    transform: translateY(100%); 
+    transition: transform 1.5s cubic-bezier(0.2, 1, 0.3, 1);
+    z-index: 3;
 }
 
 .char-img {
-    height: 100%; /* Mengikuti tinggi container (55vh) */
+    max-height: 100%; /* Gambar tidak boleh lebih tinggi dari containernya */
     width: auto;
     object-fit: contain;
+    display: block;
 }
 
-/* --- ANIMASI --- */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(-30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulse-animation {
-    0% { transform: scale(1); }
-    70% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-.animate-fade {
-    opacity: 0;
-    animation: fadeInUp 1.2s ease forwards;
-}
-
-.delay-1 { animation-delay: 0.5s; }
-.delay-2 { animation-delay: 1.5s; }
-.delay-3 { animation-delay: 2.5s; }
-
-/* Trigger saat tombol diklik */
-.show-anim .anim-top, 
-.show-anim .anim-bottom {
+/* --- TRIGGER ANIMASI (PASTIKAN SEPERTI INI) --- */
+.show-anim .anim-top {
     transform: translateY(0);
+}
+
+.show-anim .char-container {
+    transform: translateY(0) !important; /* Memaksa berhenti di posisi container */
 }
