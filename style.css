@@ -149,28 +149,36 @@ p {
     transform: translateY(-100%); /* Awalnya di luar layar atas */
     transition: transform 1.5s ease-out;
 }
-
 /* 2. Bunga Bawah & Karakter: Container utama yang nempel di bawah */
 .char-container {
     position: absolute;
-    bottom: 0; /* INI KUNCINYA: Nempel di paling bawah */
+    bottom: 0; /* Mengunci posisi di dasar */
     left: 0;
     width: 100%;
-    height: 60vh; /* Kita batasi tinggi containernya biar nggak ke atas */
+    height: 50vh; /* Sesuaikan tinggi bunga+karakter (50% dari tinggi layar) */
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Supaya gambarnya 'duduk' di dasar container */
+    align-items: flex-end; 
     z-index: 1;
-    transform: translateY(100%); /* Awalnya di luar layar bawah */
-    transition: transform 1.5s ease-out;
+    overflow: hidden; /* Tambahan: agar tidak meluber keluar */
+    
+    /* Mulai dari bawah layar (sembunyi) */
+    transform: translateY(100%); 
+    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1); /* Transisi lebih halus */
 }
 
-/* 3. Gambar Karakter: Atur ukuran agar pas */
+/* 3. Gambar Karakter: Pastikan dia memenuhi container tapi tidak keluar */
 .char-img {
-    height: 100%; /* Tingginya ngikutin containernya (60vh) */
-    width: auto; /* Lebarnya nyesuain biar nggak gepeng */
-    max-width: 100%; /* Biar nggak ngelebar di layar kecil */
+    height: 100%; 
+    width: auto;
+    object-fit: contain; /* Menjaga proporsi gambar */
     display: block;
+}
+
+/* --- TRIGGER ANIMASI SAAT KLIK --- */
+/* Saat class show-anim muncul, container hanya bergerak ke posisi 0 (dasar layar) */
+.show-anim .anim-bottom {
+    transform: translateY(0) !important; 
 }
 
 /* --- Pengaturan Teks --- */
@@ -213,3 +221,4 @@ p {
 .show-anim .date-page {
     opacity: 1;
 }
+
