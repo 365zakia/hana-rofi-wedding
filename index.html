@@ -3,34 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Undangan Hana & Rofi</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
 
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+
 <!-- HALAMAN 1 -->
+
 <section class="hero">
-    <div class="content">
-        <p class="sub-title animate-fade delay-1">UNDANGAN PERNIKAHAN</p>
 
-        <h1 class="nama animate-fade delay-2">
-            Hana<br>&<br>Rofi
-        </h1>
+<div class="content">
 
-        <p class="invite-text animate-fade delay-3">
-            MENGUNDANG ANDA UNTUK HADIR<br>
-            PADA PERNIKAHAN KAMI
-        </p>
+<p class="sub-title animate-fade delay-1">
+UNDANGAN PERNIKAHAN
+</p>
 
-        <button class="btn">Buka Undangan</button>
-    </div>
+<h1 class="nama animate-fade delay-2">
+Hana<br>&<br>Rofi
+</h1>
+
+<p class="invite-text animate-fade delay-3">
+MENGUNDANG ANDA UNTUK HADIR<br>
+PADA PERNIKAHAN KAMI
+</p>
+
+<button class="btn">
+Buka Undangan
+</button>
+
+</div>
 </section>
 
 
+
 <!-- HALAMAN 2 -->
+
 <section id="main-content" class="main-page hidden">
 
 <div id="flower-container"></div>
@@ -50,16 +63,15 @@ Hana & Rofi
 </section>
 
 
-<!-- HALAMAN 3 -->
-<section class="page-3">
 
-<div class="page3-container">
+<!-- HALAMAN 3 -->
+
+<section class="page-3">
 
 <img src="background-halaman-3.png" alt="Ayat Pernikahan">
 
-</div>
-
 </section>
+
 
 
 <script>
@@ -67,6 +79,10 @@ Hana & Rofi
 const openBtn = document.querySelector('.btn');
 const heroSection = document.querySelector('.hero');
 const mainSection = document.querySelector('#main-content');
+
+let petalInterval;
+
+
 
 openBtn.addEventListener('click', function() {
 
@@ -81,21 +97,25 @@ mainSection.classList.remove('hidden');
 setTimeout(() => {
 
 mainSection.classList.add('show-anim');
-setInterval(createPetal, 300);
 
-}, 100);
+petalInterval = setInterval(createPetal,300);
 
-}, 800);
+},100);
+
+},800);
 
 });
+
 
 
 function createPetal(){
 
 const container = document.getElementById('flower-container');
+
 if(!container) return;
 
 const petal = document.createElement('div');
+
 petal.classList.add('petal');
 
 const size = Math.random() * 20 + 15;
@@ -119,7 +139,27 @@ petal.remove();
 
 }
 
+
+
+window.addEventListener("scroll",function(){
+
+const page3 = document.querySelector(".page-3");
+
+if(!page3) return;
+
+const page3Top = page3.offsetTop;
+
+if(window.scrollY >= page3Top - 200){
+
+clearInterval(petalInterval);
+
+}
+
+});
+
+
 </script>
+
 
 </body>
 </html>
