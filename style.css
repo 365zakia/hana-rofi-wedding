@@ -228,33 +228,18 @@ animation-delay:2.5s;
 /* --- HALAMAN 3 --- */
 
 .page-3{
-
-width:100%;
-min-height:100vh;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-padding:40px 20px;
-
-box-sizing:border-box;
-
-background-color:#ffffff;
-
+    width:100%;
+    min-height:100vh;
+    margin:0;
+    padding:0;
 }
 
 .page3-container{
-
-width:100%;
-max-width:420px;
-
+    width:100%;
 }
 
 .page3-container img{
-
-width:100%;
-height:auto;
-display:block;
-
+    width:100%;
+    height:auto;
+    display:block;
 }
