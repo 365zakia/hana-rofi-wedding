@@ -229,17 +229,13 @@ animation-delay:2.5s;
 
 .page-3{
     width:100%;
-    min-height:100vh;
     margin:0;
     padding:0;
 }
 
-.page3-container{
-    width:100%;
-}
-
-.page3-container img{
+.page-3 img{
     width:100%;
     height:auto;
     display:block;
 }
+
