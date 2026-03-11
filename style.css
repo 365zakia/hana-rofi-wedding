@@ -125,14 +125,14 @@ p{
 .show-page4 .anim-page4:nth-child(4){ animation-delay:1.2s; }
 @keyframes fadeUpPage4{ from{ opacity:0; transform:translateY(-40px); } to{ opacity:1; transform:translateY(0); } }
 
-/* --- HALAMAN 5 : ACARA (FIX POSISI DESAIN) --- */
+/* --- HALAMAN 5 : ACARA (FIX PRESISI) --- */
 
 .page-5{
     width:100%;
     min-height:120vh;
 
     background-image:url('background-halaman-5.png');
-    background-size:100% auto; 
+    background-size:100% auto;
     background-position:top center;
     background-repeat:no-repeat;
 
@@ -143,32 +143,35 @@ p{
     text-align:center;
     position:relative;
 
-    padding-top:120px;
-    padding-bottom:180px;
+    padding-top:80px;
+    padding-bottom:200px;
 
     background-color:#b9a3c9;
 }
+
+/* container utama */
 
 .event-container{
     position:relative;
     width:100%;
     max-width:400px;
+
     display:flex;
     flex-direction:column;
     align-items:center;
 }
 
-/* FRAME BUNGA */
+/* floral frame */
 
 .floral-frame{
     position:absolute;
-    top:-150px;
+    top:-220px;   /* dinaikkan supaya sejajar desain */
     width:110%;
     z-index:2;
     pointer-events:none;
 
     opacity:0;
-    transform:scale(0.8);
+    transform:scale(0.85);
     transition:all 1.5s cubic-bezier(0.22,1,0.36,1);
 }
 
@@ -177,29 +180,31 @@ p{
     transform:scale(1);
 }
 
-/* POSISI TEKS DI DALAM FRAME */
+/* wrapper teks */
 
 .event-wrapper{
     position:relative;
     z-index:3;
-    margin-top:-10px;
+    margin-top:-120px;   /* teks ikut naik supaya pas di frame */
 }
+
+/* jarak event */
 
 .event{
-    margin-bottom:35px;
+    margin-bottom:32px;
 }
 
-/* JUDUL */
+/* judul acara */
 
 .event-title{
     font-family:'Great Vibes',cursive;
-    font-size:45px;
+    font-size:44px;
     color:#5d467c;
     margin-bottom:5px;
     font-weight:normal;
 }
 
-/* DETAIL */
+/* detail acara */
 
 .event-day,
 .event-time{
@@ -219,10 +224,10 @@ p{
     margin:3px 0;
 }
 
-/* LOKASI */
+/* lokasi */
 
 .location{
-    margin-top:30px;
+    margin-top:25px;
 }
 
 .location-icon{
@@ -240,24 +245,27 @@ p{
     line-height:1.5;
 }
 
-/* BUTTON MAPS */
+/* tombol maps */
 
 .maps-btn{
     display:inline-block;
     background-color:#6c5a8c;
     color:white;
+
     padding:10px 25px;
     border-radius:8px;
+
     font-family:'Montserrat',sans-serif;
     font-size:12px;
     font-weight:700;
+
     text-decoration:none;
     letter-spacing:1px;
 
     animation:pulse-animation 2s infinite;
 }
 
-/* ANIMASI MASUK */
+/* animasi muncul */
 
 .anim-page5{
     opacity:0;
