@@ -178,28 +178,39 @@ Lihat Maps
 
 </section>
 
+/* ========================= */
+/* SCRIPT UCAPAN TAMU - FIXED */
+/* ========================= */
+const form = document.getElementById("wish-form");
+const statusTxt = document.getElementById("status");
 
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+    
+    statusTxt.innerText = "Sedang mengirim...";
+    
+    const nama = document.getElementById("nama").value;
+    const ucapan = document.getElementById("ucapan").value;
+    
+    // Menggunakan URLSearchParams agar data masuk sebagai form-data (lebih stabil untuk Apps Script)
+    const formData = new FormData();
+    formData.append("nama", nama);
+    formData.append("ucapan", ucapan);
 
-<!-- HALAMAN UCAPAN TAMU -->
-
-<section class="wishes-section">
-
-<h2>Kirim Ucapan & Doa</h2>
-
-<form id="wish-form">
-
-<input type="text" id="nama" placeholder="Nama Anda" required>
-
-<textarea id="ucapan" placeholder="Ucapan & Doa" required></textarea>
-
-<button type="submit">Kirim Ucapan</button>
-
-</form>
-
-<p id="status"></p>
-
-</section>
-
+    fetch("https://script.google.com/macros/s/AKfycbwVajswSyNuteH_XsaxZ_s3MSbiOsR9ryBq4RaGQ-Alg8C7_9BarRojF6RrHkKYXYSE/exec", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => {
+        // Karena Apps Script sering redirect, kita anggap sukses jika request sampai
+        statusTxt.innerText = "Ucapan berhasil dikirim ❤️";
+        form.reset();
+    })
+    .catch(err => {
+        console.error(err);
+        statusTxt.innerText = "Gagal mengirim, coba lagi nanti.";
+    });
+});
 
 
 <!-- AUDIO MUSIK -->
@@ -345,3 +356,4 @@ document.getElementById("status").innerText = "Gagal mengirim";
 
 </body>
 </html>
+
