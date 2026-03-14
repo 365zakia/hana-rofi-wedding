@@ -1,3 +1,21 @@
+/* ========================= */
+/* MODE TAMPILAN HP */
+/* ========================= */
+
+body{
+    display:flex;
+    justify-content:center;
+    background:#e9e6f0;
+}
+
+.phone-frame{
+    width:100%;
+    max-width:420px;
+    background:white;
+    overflow:hidden;
+    position:relative;
+}
+
 /* --- RESET --- */
 body, html { 
     margin: 0; 
