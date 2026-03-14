@@ -287,7 +287,7 @@ p {
 /* floral frame */
 .floral-frame {
     position: relative;
-    top: -50px;
+    top: -25px;
     width: 105%;
     z-index: 2;
     pointer-events: none;
@@ -312,7 +312,7 @@ p {
 }
 
 /* jarak event */
-.event { margin-bottom: 32px; }
+.event { margin-bottom: 15px; }
 
 /* judul acara */
 .event-title {
@@ -343,7 +343,7 @@ p {
 }
 
 /* lokasi */
-.location { margin-top: 20px; }
+.location { margin-top: 10px; }
 
 .location-icon {
     width: 55px;
