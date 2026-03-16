@@ -142,6 +142,7 @@ p {
     font-size: 55px; 
     white-space: nowrap; 
     margin: 0; 
+    margin-top: 45px;
     font-weight: normal;
     opacity: 0; 
     transform: translateY(30px); 
@@ -240,13 +241,15 @@ p {
     margin-bottom: 50px; 
 }
 
-.couple-photo { width: 180px; }
+.couple-photo { width: 220px; margin-left: -16px: }
 
 .couple-name { 
     font-family: 'Great Vibes', cursive; 
-    font-size: 38px; 
+    font-size: 50px; 
     color: #f3eadb; 
     margin: 0; 
+    margin-left: -32px;
+    margin-bottom: 60px;
     font-weight: normal; 
 }
 
@@ -277,7 +280,7 @@ p {
 /* --- HALAMAN 5 : ACARA (FIX PRESISI) --- */
 .page-5 {
     width: 100%;
-    min-height: 120vh;
+    min-height: 40vh;
     background-image: url('background-halaman-5.png');
     background-size: 100% auto;
     background-position: top center;
@@ -287,8 +290,8 @@ p {
     align-items: flex-start;
     text-align: center;
     position: relative;
-    padding-top: 80px;
-    padding-bottom: 200px;
+    padding-top: 00px;
+    padding-bottom: 122px;
 }
 
 /* container utama */
@@ -296,6 +299,7 @@ p {
     position: relative;
     width: 100%;
     max-width: 400px;
+    top: 147px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -321,7 +325,7 @@ p {
 /* wrapper teks */
 .event-wrapper {
     position: absolute;
-    top: 40%;
+    top: 32%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
@@ -372,7 +376,8 @@ p {
     font-size: 11px;
     letter-spacing: 1px;
     color: #5d467c;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    margin-top: -12px;
     text-transform: uppercase;
     line-height: 1.5;
 }
@@ -506,6 +511,8 @@ p {
     margin-bottom:40px;
     opacity:0;
     font-weight: normal;
+    text-align: center;
+    width: 100%;
 }
 
 /* animasi judul */
