@@ -460,12 +460,14 @@ p {
     font-family: 'Great Vibes', cursive; 
     font-size: 50px; 
     color: #6c5a8c; 
-    margin-bottom: -250px;
+    margin-bottom: -170px;
     margin-top: 88px;
     opacity: 0; 
     font-weight: normal; 
     text-align: center; 
-    width: 80%; 
+    width: 80%;
+    position: relative;
+    z-index: 10;
 }
 
 .anim-wish { 
@@ -502,7 +504,7 @@ p {
 /* Aturan dasar untuk kedua bunga */
 .petal-ucapan { 
     position: absolute; 
-    width: 130px; 
+    width: 115px; 
     animation: petalPulse 2.5s infinite; 
     z-index: 5; /* Pastikan di atas frame */
 }
@@ -510,13 +512,13 @@ p {
 /* Posisi Bunga Kiri */
 .bunga-kiri {
     left: -75px; 
-    top: 460px; 
+    top: 496px; 
 }
 
 /* Posisi Bunga Kanan */
 .bunga-kanan {
     right: 34px; /* Pakai right biar nempel ke kanan */
-    top: 460px; 
+    top: 496px; 
     transform: scaleX(-1); /* Efek cermin biar bunganya hadap ke dalam */
 }
 
