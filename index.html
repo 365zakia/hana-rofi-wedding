@@ -159,81 +159,111 @@
         <source src="nothings.mp3" type="audio/mpeg">
     </audio>
 
-    <script>
-        const openBtn = document.querySelector('.btn');
-        const heroSection = document.querySelector('.hero');
-        const mainSection = document.querySelector('#main-content');
-        const page3 = document.querySelector('.page-3');
-        const page4 = document.querySelector('.page-4');
-        const page5 = document.querySelector('.page-5');
-        const wishesSection = document.querySelector('.wishes-section');
-        const music = document.getElementById("bg-music");
-        let petalInterval;
+   <script>
+    const openBtn = document.querySelector('.btn');
+    const heroSection = document.querySelector('.hero');
+    const mainSection = document.querySelector('#main-content');
+    const page3 = document.querySelector('.page-3');
+    const page4 = document.querySelector('.page-4');
+    const page5 = document.querySelector('.page-5');
+    const wishesSection = document.querySelector('.wishes-section');
+    
+    // 1. DAFTARKAN HALAMAN 7 DI SINI
+    const giftSection = document.querySelector('.gift-section'); 
+    
+    const music = document.getElementById("bg-music");
+    let petalInterval;
 
-        openBtn.addEventListener('click', function() {
-            music.play();
-            heroSection.style.opacity = '0';
-            heroSection.style.transition = '0.8s';
-            setTimeout(() => {
-                heroSection.classList.add('hidden');
-                [mainSection, page3, page4, page5, wishesSection].forEach(el => el.classList.remove('hidden'));
-                setTimeout(() => {
-                    mainSection.classList.add('show-anim');
-                    petalInterval = setInterval(createPetal, 300);
-                }, 100);
-            }, 800);
-        });
-
-        function createPetal(){
-            const container = document.getElementById('flower-container');
-            if(!container) return;
-            const petal = document.createElement('div');
-            petal.classList.add('petal');
-            const size = Math.random() * 20 + 15;
-            petal.innerHTML = `<img src="petal.png" style="width:${size}px;height:auto;">`;
-            petal.style.left = Math.random() * 100 + 'vw';
-            petal.style.animationDuration = Math.random() * 5 + 5 + 's';
-            petal.style.opacity = Math.random() * 0.7 + 0.3;
-            container.appendChild(petal);
-            setTimeout(() => { petal.remove(); }, 10000);
-        }
-
-        window.addEventListener("scroll", function() {
-            if(window.scrollY >= page4.offsetTop - 300) page4.classList.add("show-page4");
-            if(window.scrollY >= page5.offsetTop - 400) page5.classList.add("show-page5");
-        });
-
-        const form = document.getElementById("wish-form");
-        const statusTxt = document.getElementById("status");
-
-        if (form) {
-            form.addEventListener("submit", function(e) {
-                e.preventDefault();
-                statusTxt.innerText = "Sedang mengirim...";
-                const nama = document.getElementById("nama").value;
-                const ucapan = document.getElementById("ucapan").value;
-                const scriptURL = "https://script.google.com/macros/s/AKfycbyAOzllV5a-_-LToQAwG3LPt4zJo80LBuJIJyclEJM3ruUWIdQwhX4rj5F6YYciNgep/exec";
-                const requestBody = new URLSearchParams();
-                requestBody.append("nama", nama);
-                requestBody.append("ucapan", ucapan);
-
-                fetch(scriptURL, {
-                    method: "POST",
-                    mode: "no-cors",
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: requestBody
-                })
-                .then(() => {
-                    statusTxt.innerText = "Ucapan berhasil<br>dikirim ❤️";
-                    form.reset();
-                })
-                .catch(err => {
-                    console.error(err);
-                    statusTxt.innerText = "Gagal mengirim, coba lagi nanti.";
-                });
+    openBtn.addEventListener('click', function() {
+        music.play();
+        heroSection.style.opacity = '0';
+        heroSection.style.transition = '0.8s';
+        setTimeout(() => {
+            heroSection.classList.add('hidden');
+            
+            // 2. MASUKKAN giftSection KE DALAM LIST AGAR HIDDEN-NYA DIHAPUS
+            [mainSection, page3, page4, page5, wishesSection, giftSection].forEach(el => {
+                if(el) el.classList.remove('hidden');
             });
+
+            setTimeout(() => {
+                mainSection.classList.add('show-anim');
+                petalInterval = setInterval(createPetal, 300);
+            }, 100);
+        }, 800);
+    });
+
+    function createPetal(){
+        const container = document.getElementById('flower-container');
+        if(!container) return;
+        const petal = document.createElement('div');
+        petal.classList.add('petal');
+        const size = Math.random() * 20 + 15;
+        petal.innerHTML = `<img src="petal.png" style="width:${size}px;height:auto;">`;
+        petal.style.left = Math.random() * 100 + 'vw';
+        petal.style.animationDuration = Math.random() * 5 + 5 + 's';
+        petal.style.opacity = Math.random() * 0.7 + 0.3;
+        container.appendChild(petal);
+        setTimeout(() => { petal.remove(); }, 10000);
+    }
+
+    window.addEventListener("scroll", function() {
+        if(window.scrollY >= page4.offsetTop - 300) page4.classList.add("show-page4");
+        if(window.scrollY >= page5.offsetTop - 400) page5.classList.add("show-page5");
+        
+        // 3. LOGIKA AGAR ANIMASI HALAMAN 7 MUNCUL SAAT DI-SCROLL
+        if(giftSection && window.scrollY >= giftSection.offsetTop - 400) {
+            giftSection.classList.add("show-gift");
         }
-    </script>
+    });
+
+    // FUNGSI COPY NOMOR REKENING
+    function copyNorek() {
+        const norekText = document.getElementById("norek").innerText;
+        navigator.clipboard.writeText(norekText).then(() => {
+            const btn = document.querySelector('.btn-copy');
+            btn.innerText = "Copied!";
+            btn.style.background = "#889149"; 
+            
+            setTimeout(() => {
+                btn.innerText = "Copy";
+                btn.style.background = "#5d467c";
+            }, 2000);
+        });
+    }
+
+    const form = document.getElementById("wish-form");
+    const statusTxt = document.getElementById("status");
+
+    if (form) {
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            statusTxt.innerText = "Sedang mengirim...";
+            const nama = document.getElementById("nama").value;
+            const ucapan = document.getElementById("ucapan").value;
+            const scriptURL = "https://script.google.com/macros/s/AKfycbyAOzllV5a-_-LToQAwG3LPt4zJo80LBuJIJyclEJM3ruUWIdQwhX4rj5F6YYciNgep/exec";
+            const requestBody = new URLSearchParams();
+            requestBody.append("nama", nama);
+            requestBody.append("ucapan", ucapan);
+
+            fetch(scriptURL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: requestBody
+            })
+            .then(() => {
+                // PERBAIKAN: Gunakan innerHTML dan pastikan satu baris teks
+                statusTxt.innerHTML = "Ucapan berhasil<br>dikirim ❤️";
+                form.reset();
+            })
+            .catch(err => {
+                console.error(err);
+                statusTxt.innerText = "Gagal mengirim, coba lagi nanti.";
+            });
+        });
+    }
+</script>
 </div>
 
 </body>
