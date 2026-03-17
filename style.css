@@ -234,10 +234,13 @@ p {
 .invite-text-page4 { 
     font-family: 'Montserrat', sans-serif; 
     font-size: 13px; 
-    color: #f3eadb; 
+    color: #f3eadb;
+    margin-top: 120px;
     margin-bottom: 40px; 
     line-height: 1.6; 
     font-weight: 400; 
+    text-transform: none;
+    font-weight: bold;
 }
 
 .couple-main-wrapper { 
@@ -289,14 +292,15 @@ p {
     font-size: 11px; 
     color: #f3eadb; 
     line-height: 1.6; 
-    font-weight: 300; 
+    text-transform: none;
+    font-weight: bold;
 }
 
 .and-symbol { 
     font-size: 55px; 
     color: #f3eadb; 
     margin: 20px 0; 
-    font-family: 'Great Vibes', cursive; 
+    font-family: 'Montserrat', sans-serif; 
 }
 
 .anim-page4 { 
