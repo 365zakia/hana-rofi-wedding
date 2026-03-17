@@ -443,7 +443,7 @@ p {
 .wishes-section {
     position: relative; 
     width: 100%; 
-    min-height: 96vh; 
+    min-height: 99vh; 
     background-image: url('background-halaman-6.png');
     background-size: contain; 
     background-position: center; 
@@ -465,7 +465,7 @@ p {
     opacity: 0; 
     font-weight: normal; 
     text-align: center; 
-    width: 82%; 
+    width: 80%; 
 }
 
 .anim-wish { 
@@ -495,8 +495,8 @@ p {
 }
 
 .frame-ucapan { 
-    width: 125%;
-    margin-left: -82px;
+    width: 130%;
+    margin-left: -95px;
 }
 
 /* Aturan dasar untuk kedua bunga */
@@ -509,14 +509,14 @@ p {
 
 /* Posisi Bunga Kiri */
 .bunga-kiri {
-    left: -68px; 
-    top: 465px; 
+    left: -75px; 
+    top: 460px; 
 }
 
 /* Posisi Bunga Kanan */
 .bunga-kanan {
-    right: -68px; /* Pakai right biar nempel ke kanan */
-    top: 465px; 
+    right: 34px; /* Pakai right biar nempel ke kanan */
+    top: 460px; 
     transform: scaleX(-1); /* Efek cermin biar bunganya hadap ke dalam */
 }
 
@@ -543,7 +543,7 @@ p {
     position: absolute; 
     transform: translateX(-5%); 
     top: 42%; 
-    left: 6%; 
+    left: 3%; 
     width: 72%; 
 }
 
