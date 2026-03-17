@@ -500,7 +500,8 @@ p {
     align-items:flex-start;
     text-align:center;
 
-    padding-top:120px;
+    padding-top:10px;
+    padding: 42px 37px;
 }
 
 /* judul */
@@ -564,9 +565,9 @@ p {
 /* bunga */
 .petal-ucapan{
     position:absolute;
-    left:-5px;
-    top:110px;
-    width:60px;
+    left:-57px;
+    top:162px;
+    width:70px;
     animation:petalPulse 2.5s infinite;
 }
 
@@ -580,9 +581,10 @@ p {
 /* posisi form */
 .ucapan-wrapper #wish-form{
     position:absolute;
-    top:18%;
-    left:15%;
-    width:70%;
+    transform: translateX(-5%);
+    top:42%;
+    left:6%;
+    width:72%;
 }
 
 /* input */
