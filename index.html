@@ -219,18 +219,26 @@
         }
     });
 
-    // FUNGSI COPY NOMOR REKENING
+    // FUNGSI COPY NOMOR REKENING (TANPA TOMBOL BIRU)
     function copyNorek() {
         const norekText = document.getElementById("norek").innerText;
+        const toast = document.getElementById("copy-toast");
+
         navigator.clipboard.writeText(norekText).then(() => {
-            const btn = document.querySelector('.btn-copy');
-            btn.innerText = "Copied!";
-            btn.style.background = "#889149"; 
+            // Beri feedback visual
+            toast.innerText = "Tersalin! ✨";
+            toast.style.background = "#889149"; 
+            toast.style.color = "white";
+            toast.style.borderColor = "#889149";
             
             setTimeout(() => {
-                btn.innerText = "Copy";
-                btn.style.background = "#5d467c";
+                toast.innerText = "Salin";
+                toast.style.background = "#f0edf5";
+                toast.style.color = "#5d467c";
+                toast.style.borderColor = "#d1cadb";
             }, 2000);
+        }).catch(err => {
+            console.error("Gagal menyalin: ", err);
         });
     }
 
