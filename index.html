@@ -316,6 +316,23 @@
     }
 </script>
 </div>
+<script>
+        window.addEventListener('scroll', function() {
+            const page3 = document.querySelector('.page-3');
+            
+            // Cek apakah halaman 3 ada di dokumen
+            if (page3) {
+                const posisiHalaman3 = page3.getBoundingClientRect().top;
+                const tinggiLayar = window.innerHeight;
 
+                // Jika Halaman 3 sudah mulai terlihat di layar HP
+                if (posisiHalaman3 < tinggiLayar - 100) {
+                    page3.classList.add('show-page3');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
 </body>
 </html>
