@@ -568,7 +568,7 @@ p {
     animation: pulse-animation 2s infinite; 
 }
 
-/* --- HALAMAN 7 : GIFT SECTION --- */
+/* --- HALAMAN 7 : GIFT SECTION (SUSUNAN ULANG JARAK & ANIMASI) --- */
 .gift-section {
     width: 100%;
     min-height: 100vh;
@@ -580,11 +580,13 @@ p {
     align-items: center;
     position: relative;
     padding: 20px;
+    overflow: hidden; /* Pastikan konten tidak luber */
 }
 
 .gift-container {
     position: relative;
     width: 100%;
+    max-width: 440px; /* Sesuai kodemu */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -592,30 +594,46 @@ p {
 
 .frame-hadiah {
     width: 100%;
-    max-width: 440px;
-    margin-left: -35px;
     z-index: 1;
+    /* Menghapus margin-left negatif agar frame tetap center */
 }
 
+/* --- Pengaturan Posisi Konten di Dalam Frame --- */
 .gift-content {
     position: absolute;
     z-index: 2;
-    width: 70%;
-    margin-left: -25px;
-    margin-top:-80px;
+    width: 75%; /* Sedikit diperlebar agar teks leluasa */
+    top: 45%; /* Posisi vertikal di tengah frame */
+    transform: translateY(-50%); /* Sentralisasi vertikal sempurna */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
 }
 
+/* =========================================
+   KELOMPOK ATAS (Kado, Judul, Ucapan)
+   Merapetkan jarak antar elemen ini
+   ========================================= */
+
+/* Waduh pembungkus untuk Kelompok Atas */
+.top-gift-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 35px; /* Jarak pemisah ke kelompok bawah */
+}
+
 .icon-kado {
-    width: 80px;
-    margin-bottom: 15px;
+    width: 70px; /* Sedikit disesuaikan */
+    margin-bottom: 8px; /* Jarak kado ke judul dirapatkan */
 }
 
 .gift-title {
     font-family: 'Great Vibes', cursive !important;
     font-size: 40px;
     color: #5d467c;
-    margin: 10px 0;
+    margin: 0 0 12px 0; /* Jarak judul ke ucapan dirapatkan */
     font-weight: normal;
 }
 
@@ -626,32 +644,45 @@ p {
     color: #5d467c;
     text-transform: none;
     letter-spacing: 0.5px;
-    margin-bottom: 20px;
+    margin: 0; /* Menghapus margin bawaan agar rapat */
+    padding: 0 5px; /* Sedikit padding agar tidak mepet pinggir */
+}
+
+
+/* =========================================
+   KELOMPOK BAWAH (Logo, Nama, NoRek, Salin)
+   Merapetkan jarak antar elemen ini
+   ========================================= */
+
+/* Waduh pembungkus untuk Kelompok Bawah */
+.bank-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0; /* Kita atur jarak pakai margin individu saja */
 }
 
 .bank-logo {
-    width: 85px;          /* Ukuran logo */
-    display: block;        /* Agar bisa diatur posisinya ke tengah */
-    margin: 0 auto 5px;    /* 0 atas, auto kiri-kanan (center), 5px bawah ke nama */
+    width: 85px;
+    margin: 0 0 8px 0; /* Jarak logo ke nama dirapatkan */
+    display: block;
 }
 
 .account-name {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 14px; /* Sesuai desain */
     color: #5d467c;
-    margin: 0 0 8px 0;     /* Jarak bawah ke nomor rekening */
+    margin: 0 0 8px 0; /* Jarak nama ke nomor rekening dirapatkan */
     text-transform: uppercase;
 }
 
-/* --- CSS TAMBAHAN UNTUK NOMOR REKENING --- */
-
 .account-number-display {
-    .account-number-display {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
-    align-items: center;   /* Menjaga nomor dan tombol tetap di tengah */
-    gap: 10px;             /* Jarak antara nomor dan tombol Salin */
+    align-items: center;
+    gap: 5px; /* Jarak nomor rekening ke tombol Salin sangat rapat */
 }
 
 #norek {
@@ -663,7 +694,7 @@ p {
 }
 
 #copy-toast {
-    background: #f0edf5; /* Warna ungu muda lembut */
+    background: #f0edf5; /* Ungu muda lembut */
     color: #5d467c;
     font-family: 'Montserrat', sans-serif;
     font-size: 9px;
@@ -677,41 +708,29 @@ p {
     display: inline-block;
 }
 
-/* Efek saat nomor rekening disentuh/diklik */
+/* Efek saat diklik */
 .account-number-display:active {
-    transform: scale(0.95);
+    transform: scale(0.96);
 }
 
-/* Biar logo bank dan nama tidak terlalu rapat */
-.bank-logo {
-    width: 85px;
-    margin-bottom: 8px;
-}
 
-.account-name {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    color: #5d467c;
-    margin-bottom: 0;
-}
+/* =========================================
+   PENGATURAN ANIMASI MUNCUL
+   ========================================= */
 
-/* ANIMASI HALAMAN 7 */
+/* Base class animasi */
 .anim-gift {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(20px); /* Angka lebih kecil agar gerakannya halus */
     transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Saat class .show-gift ditambahkan di section */
 .show-gift .anim-gift {
     opacity: 1;
     transform: translateY(0);
-    font-weight: normal;
-    margin-top: 30px;
-    margin-bottom: -25px;
 }
 
-.delay-1 { transition-delay: 0.3s; }
-.delay-2 { transition-delay: 0.6s; }
-.delay-3 { transition-delay: 0.9s; }
-.delay-4 { transition-delay: 1.2s; }
+/* Pengaturan Delay agar muncul bergantian */
+.delay-top { transition-delay: 0.2s; }  /* Kelompok Atas muncul dulu */
+.delay-bank { transition-delay: 1.0s; } /* Kelompok Bawah muncul belakangan */
