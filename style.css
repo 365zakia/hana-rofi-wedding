@@ -87,10 +87,11 @@ h1.nama {
 
 p { 
     font-family: 'Montserrat', sans-serif; 
-    color: #5d467c; 
+    color: #faf7fe; 
     font-size: 11px; 
     letter-spacing: 2px; 
-    text-transform: uppercase; 
+    margin-left: 22px;
+    text-transform: none; 
 }
 
 .btn {
@@ -465,7 +466,7 @@ p {
 }
 
 .rsvp-group {
-    margin: 20px 0;
+    margin: 8px 0;
     text-align: center;
 }
 
@@ -473,8 +474,9 @@ p {
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     font-weight: 600;
-    color: #5d467c;
+    color: #f0edf5;
     margin-bottom: 10px;
+    text-transform: none;
 }
 
 .rsvp-options {
@@ -538,21 +540,21 @@ p {
 /* Aturan dasar untuk kedua bunga */
 .petal-ucapan { 
     position: absolute; 
-    width: 115px; 
+    width: 110px; 
     animation: petalPulse 2.5s infinite; 
     z-index: 5; /* Pastikan di atas frame */
 }
 
 /* Posisi Bunga Kiri */
 .bunga-kiri {
-    left: -75px; 
-    top: 496px; 
+    left: -70px; 
+    top: 512px; 
 }
 
 /* Posisi Bunga Kanan */
 .bunga-kanan {
-    right: 9px; /* Pakai right biar nempel ke kanan */
-    top: 496px; 
+    right: 14px; /* Pakai right biar nempel ke kanan */
+    top: 512px; 
     transform: scaleX(-1); /* Efek cermin biar bunganya hadap ke dalam */
 }
 
@@ -578,7 +580,7 @@ p {
 .ucapan-wrapper #wish-form { 
     position: absolute; 
     transform: translateX(-5%); 
-    top: 42%; 
+    top: 40%; 
     left: 3%; 
     width: 72%; 
 }
@@ -605,6 +607,7 @@ p {
     color: white; 
     border: none; 
     padding: 8px 22px; 
+    margin-left: 22px;
     border-radius: 10px; 
     font-weight: 700; 
     cursor: pointer; 
