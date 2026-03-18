@@ -630,30 +630,28 @@ p {
 }
 
 .bank-logo {
-    width: 80px;
-    margin-bottom: 0;   /* Menghapus jarak bawah logo agar menempel ke nama */
-    margin-top: 10px;   /* Memberi jarak atas yang wajar agar tidak menabrak teks di atasnya */
-    display: block;     /* Memastikan logo berada di baris sendiri */
+    width: 85px;          /* Ukuran logo */
+    display: block;        /* Agar bisa diatur posisinya ke tengah */
+    margin: 0 auto 5px;    /* 0 atas, auto kiri-kanan (center), 5px bawah ke nama */
 }
 
 .account-name {
-    font-weight: bold;
-    font-size: 14px;
-    margin-top: -5px; /* Sedikit angka minus di sini lebih aman untuk merapatkan ke logo */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #5d467c;
+    margin: 0 0 8px 0;     /* Jarak bawah ke nomor rekening */
     text-transform: uppercase;
 }
 
 /* --- CSS TAMBAHAN UNTUK NOMOR REKENING --- */
 
 .account-number-display {
-    cursor: pointer;
+    .account-number-display {
     display: flex;
-    flex-direction: column; /* Nomor di atas, tulisan salin di bawah */
-    align-items: center;
-    gap: 5px; /* Jarak antara nomor dan tulisan salin */
-    margin-top: 5px;
-    padding: 10px;
-    transition: all 0.3s ease;
+    flex-direction: column;
+    align-items: center;   /* Menjaga nomor dan tombol tetap di tengah */
+    gap: 10px;             /* Jarak antara nomor dan tombol Salin */
 }
 
 #norek {
