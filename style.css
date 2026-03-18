@@ -268,16 +268,6 @@ p {
     z-index: 1; 
 }
 
-.gold-frame-overlay { 
-    width: 100%; 
-    height: 100%; 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    z-index: 2; 
-    pointer-events: none; 
-}
-
 .couple-name { 
     font-family: 'Great Vibes', cursive !important; 
     font-size: 45px; 
@@ -641,14 +631,16 @@ p {
 
 .bank-logo {
     width: 80px;
-    margin-bottom: 2px;
-    margin-top: -50px
+    margin-bottom: 0;   /* Menghapus jarak bawah logo agar menempel ke nama */
+    margin-top: 10px;   /* Memberi jarak atas yang wajar agar tidak menabrak teks di atasnya */
+    display: block;     /* Memastikan logo berada di baris sendiri */
 }
 
 .account-name {
     font-weight: bold;
     font-size: 14px;
-    margin: 5px 0;
+    margin-top: -5px; /* Sedikit angka minus di sini lebih aman untuk merapatkan ke logo */
+    text-transform: uppercase;
 }
 
 /* --- CSS TAMBAHAN UNTUK NOMOR REKENING --- */
