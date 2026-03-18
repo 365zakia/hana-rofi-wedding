@@ -816,61 +816,111 @@ p {
     line-height: 1.4;
 }
 
-/* --- WADAH UTAMA --- */
+/* ========================================= */
+/* ANIMASI GEROMBOLAN KUPU-KUPU (HAL 1)     */
+/* ========================================= */
+
 .butterfly-container {
-    position: fixed; /* Tetap pakai fixed agar tidak terganggu Flex Hero */
+    position: fixed; /* Tetap pakai fixed agar selayar penuh */
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     pointer-events: none;
-    z-index: 99;
+    z-index: 10; /* Di bawah daun, di atas background */
     overflow: hidden;
 }
 
-/* --- ATURAN DASAR KUPU-KUPU --- */
-.butterfly {
+/* --- LOGIKA PERBANYAKAN (Swarms) --- */
+.butterfly-swarm {
     position: absolute;
-    width: 45px;
-    height: 45px;
-    background-image: url('kupu-kupu.png');
+    width: 35px; /* Ukuran kupu-kupu watercolor diperkecil */
+    height: 35px;
+    background-image: url('kupu-kupu.png'); /* File kupu-kupu watercolor kamu */
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0;
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+    opacity: 0.9;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6)); /* Glow lembut */
     
-    /* Titik kumpul awal: Tengah bawah */
-    left: 50%;
-    top: 75%;
-    margin-left: -22px; /* Setengah dari width agar center pas */
+    /* --- TEKNIK BOX-SHADOW UNTUK PERBANYAKAN --- */
+    /* Kita bikin 10 "bayangan" kupu-kupu dengan rute terbang acak */
+    box-shadow: 
+        100px -200px rgba(255,255,255,0.7), /* Kupu 2 */
+        -150px -400px rgba(255,255,255,0.7), /* Kupu 3 */
+        50px -600px rgba(255,255,255,0.7), /* Kupu 4 */
+        -200px -800px rgba(255,255,255,0.7), /* Kupu 5 */
+        180px -100px rgba(255,255,255,0.7), /* Kupu 6 */
+        -50px -300px rgba(255,255,255,0.7), /* Kupu 7 */
+        120px -500px rgba(255,255,255,0.7), /* Kupu 8 */
+        -100px -700px rgba(255,255,255,0.7), /* Kupu 9 */
+        200px -900px rgba(255,255,255,0.7); /* Kupu 10 */
+    
+    /* --- ANIMASI GABUNGAN: TERBANG SAT-SET & KEPAK --- */
+    /* 1. Terbang meliuk menyebar (flyMagicalSpread) */
+    /* 2. Kepak sayap super smooth (flap) */
+    animation: 
+        flyMagicalSpread 12s linear infinite 0s, 
+        flap 0.1s linear infinite; /* Kepak sayap super cepet, bareng daun */
 }
 
-/* --- ANIMASI TUNGGAL (GABUNGAN TERBANG & KEPAK) --- */
-@keyframes magicalSpread {
+/* ========================================= */
+/* KEYFRAMES LOGIKA GERAKAN KUPU-KUPU      */
+/* ========================================= */
+
+/* 1. Rute Terbang Menari-nari Lincah (mengelilingi & menyebar) */
+@keyframes flyMagicalSpread {
     0% {
+        top: 60%; /* Mulai dari tengah bawah */
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(0deg) scale(0.1);
         opacity: 0;
-        transform: translate(0, 0) scale(0.3) rotate(0deg) scaleX(1);
     }
-    10% {
-        opacity: 1;
+    5% {
+        opacity: 0.9;
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
     }
-    /* Efek Kepak Sayap di tengah perjalanan (pakai scaleX) */
-    25%, 75% { transform: translate(var(--tw), var(--th)) scale(1) rotate(var(--rot)) scaleX(0.3); }
-    50% { transform: translate(var(--tw), var(--th)) scale(1.1) rotate(var(--rot)) scaleX(1); }
-    
-    90% { opacity: 1; }
+    25% {
+        top: 30%;
+        left: 20%; /* Meliuk ke kiri atas */
+        transform: translate(-50%, -50%) rotate(-15deg) scale(1.1);
+    }
+    50% {
+        top: 60%;
+        left: 80%; /* Meliuk ke kanan tengah */
+        transform: translate(-50%, -50%) rotate(10deg) scale(1.2);
+    }
+    75% {
+        top: 25%;
+        left: 50%; /* Tengah agak atas, kumpul lagi */
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    }
+    85% {
+        top: 15%;
+        left: -10%; /* Keluar layar kiri */
+        transform: translate(-50%, -50%) rotate(-30deg) scale(0.8);
+    }
+    95% {
+        top: 20%;
+        left: 110%; /* Keluar layar kanan */
+        transform: translate(-50%, -50%) rotate(30deg) scale(0.8);
+    }
     100% {
+        top: -10%; /* Terbang lurus ke atas angkasa */
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(0deg) scale(0.1);
         opacity: 0;
-        transform: translate(var(--endX), var(--endY)) scale(1.3) rotate(var(--rot)) scaleX(1);
     }
 }
 
-/* --- PENGATURAN TIAP KUPU-KUPU (Rute Menyebar) --- */
-/* --endX & --endY adalah titik tujuan akhir menyebar */
-
-.b1 { animation: magicalSpread 7s linear infinite; --endX: -150px; --endY: -500px; --rot: -30deg; animation-delay: 0s; }
-.b2 { animation: magicalSpread 9s linear infinite; --endX: 180px; --endY: -450px; --rot: 40deg; animation-delay: 1.5s; }
-.b3 { animation: magicalSpread 6s linear infinite; --endX: -250px; --endY: -200px; --rot: -70deg; animation-delay: 3s; }
-.b4 { animation: magicalSpread 10s linear infinite; --endX: 280px; --endY: -600px; --rot: 20deg; animation-delay: 0.8s; }
-.b5 { animation: magicalSpread 8s linear infinite; --endX: -50px; --endY: -700px; --rot: -10deg; animation-delay: 4.5s; }
-.b6 { animation: magicalSpread 11s linear infinite; --endX: 300px; --endY: -150px; --rot: 80deg; animation-delay: 2.2s; }
+/* 2. Kepak Sayap (Flap) - Trik Super Smooth & Wow */
+@keyframes flap {
+    0% {
+        transform: scaleY(1); /* Sayap Mekar */
+    }
+    50% {
+        transform: scaleY(0.1); /* Sayap Kuncup (Cuma 10% tinggi) */
+    }
+    100% {
+        transform: scaleY(1); /* Sayap Mekar Kembali */
+    }
+}
