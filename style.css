@@ -464,6 +464,50 @@ p {
     animation: fadeUpWish 1.2s ease forwards; 
 }
 
+.rsvp-group {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.label-rsvp {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #5d467c;
+    margin-bottom: 10px;
+}
+
+.rsvp-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.rsvp-item input {
+    display: none; /* Sembunyikan bulatan radio asli */
+}
+
+.rsvp-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    background: #f0edf5;
+    border: 1px solid #d1cadb;
+    border-radius: 10px;
+    color: #5d467c;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Warna saat tombol dipilih */
+.rsvp-item input:checked + .rsvp-btn {
+    background: #889149; /* Warna hijau senada tema kado */
+    color: white;
+    border-color: #889149;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
 @keyframes fadeUpWish { 
     from { opacity: 0; transform: translateY(40px); } 
     to { opacity: 1; transform: translateY(0); } 
