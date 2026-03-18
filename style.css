@@ -817,174 +817,134 @@ p {
 }
 
 /* ========================================= */
-/* ANIMASI SEPASANG BURUNG DINAMIS (HAL 1)   */
+/* ANIMASI KUPU-KUPU TERBANG MENYEBAR (HAL 1)*/
 /* ========================================= */
 
-.pigeon-pair {
+.butterfly-spread {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 1; 
+    z-index: 1; /* Di atas background, di bawah daun */
 }
 
-.pigeon-pair::before,
-.pigeon-pair::after {
+/* Base Style untuk Kupu-kupu 1 (::before) dan Kupu-kupu 2 (::after) */
+.butterfly-spread::before,
+.butterfly-spread::after {
     content: "";
     position: absolute;
-    width: 60px; 
+    width: 60px; /* Ukuran kupu-kupu watercolor */
     height: 60px;
-    background-image: url('syahdu-bird.png');
+    background-image: url('kupu-kupu.png'); /* File kupu-kupu watercolor kamu */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     opacity: 0;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
+    
+    /* Efek Glow Putih agar mencolok dan mewah */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+    
+    /* Titik Awal: Di tengah bawah, dekat tombol Buka Undangan */
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1); /* Mulai dari sangat kecil (hinggap) */
+}
 
-    /* DURASI DIPERCEPAT JADI 8 DETIK */
+/* ========================================= */
+/* KUPU-KUPU 1: MENYEBAR KE KIRI ATAS      */
+/* ========================================= */
+.butterfly-spread::before {
     animation: 
-        pigeonFade 1s ease forwards 3.5s, 
-        pigeonFlyWow 8s ease-in-out infinite 3.5s;
+        spreadFade 0.5s ease forwards 0.5s, /* Muncul perlahan */
+        spreadLeftWow 7s ease-out infinite 0.5s; /* Terbang & Muter */
 }
 
-/* Burung kedua muncul lebih cepat biar kelihatan mengejar */
-.pigeon-pair::after {
-    animation-delay: 4.2s; 
-    width: 70px;
-    opacity: 0;
+/* ========================================= */
+/* KUPU-KUPU 2: MENYEBAR KE KANAN ATAS     */
+/* ========================================= */
+.butterfly-spread::after {
+    width: 50px; /* Sedikit lebih kecil */
+    animation: 
+        spreadFade 0.5s ease forwards 1.0s, /* Jeda muncul biar susul-susulan */
+        spreadRightWow 7s ease-out infinite 1.0s; /* Terbang & Muter */
 }
 
-/* --- KEYFRAMES BARU: LEBIH LINCAH & BERBELOK --- */
+/* ========================================= */
+/* KEYFRAMES LOGIKA GERAKAN MENYEBAR      */
+/* ========================================= */
 
-@keyframes pigeonFade {
-    to { opacity: 0.9; }
+/* 1. Muncul (FadeIn & Scale) */
+@keyframes spreadFade {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.1); }
+    100% { opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
 }
 
-@keyframes pigeonFlyWow {
+/* 2. Rute Kupu-kupu 1: Menyebar ke KIRI ATAS (Wow) */
+@keyframes spreadLeftWow {
     0% {
-        top: 40%;
-        left: -20%;
-        transform: scaleX(1) rotate(10deg); /* Hadap kanan, agak nungging */
+        top: 70%;
+        left: 50%;
+        transform: rotate(0deg); /* Hinggap */
+    }
+    15% {
+        top: 60%;
+        left: 40%;
+        transform: rotate(-15deg); /* Mulai terbang nanjak */
     }
     40% {
+        top: 30%;
+        left: 10%;
+        transform: rotate(10deg); /* Meliuk di kiri atas */
+    }
+    60% {
+        top: 10%;
+        left: 30%;
+        transform: rotate(-5deg); /* Muter di pojok kiri atas */
+    }
+    80% {
         top: 20%;
-        left: 50%;
-        transform: scaleX(1) rotate(-10deg); /* Di tengah agak naik */
-    }
-    50% {
-        top: 40%;
-        left: 120%;
-        transform: scaleX(1) rotate(0deg); /* Keluar kanan */
-    }
-    /* Balik Badan Cepat */
-    51% {
-        transform: scaleX(-1) rotate(0deg); /* Putar arah hadap kiri */
-    }
-    90% {
-        top: 60%;
-        left: 50%;
-        transform: scaleX(-1) rotate(15deg); /* Lewat bawah tengah */
+        left: -15%;
+        transform: rotate(-10deg); /* Keluar layar kiri */
     }
     100% {
-        top: 40%;
-        left: -20%;
-        transform: scaleX(-1) rotate(0deg);
-    }/* ========================================= */
-/* ANIMASI BURUNG MUNCUL BARENG DAUN (HAL 1) */
-/* ========================================= */
-
-.pigeon-pair {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1; 
+        top: 20%;
+        left: -15%;
+        transform: rotate(-10deg); /* Sembunyi */
+    }
 }
 
-.pigeon-pair::before,
-.pigeon-pair::after {
-    content: "";
-    position: absolute;
-    width: 60px; 
-    height: 60px;
-    background-image: url('syahdu-bird.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    
-    /* GANTI OPACITY AWAL JADI LANGSUNG 0.9 (LANGSUNG MUNCUL) */
-    opacity: 0.9; 
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
-
-    /* --- SEMUA DELAY UBAH JADI 0s --- */
-    animation: 
-        pigeonFade 0.5s ease forwards 0s, /* 0s: Langsung Jalan */
-        pigeonFlySmooth 5s linear infinite 0s; /* 0s: Langsung Jalan */
-}
-
-/* Jarak burung kedua diperdekat agar terlihat mengejar mulus */
-.pigeon-pair::after {
-    /* --- UBAH JEDA BURUNG KE-2 JADI LEBIH CEPAT --- */
-    animation-delay: 0.6s; /* Burung ke-2 muncul 0.6 detik setelah yang pertama */
-    width: 75px;
-    opacity: 0;
-}
-
-/* ========================================= */
-/* KEYFRAMES BARU: RUTE MENGALIR (FLOW)    */
-/* ========================================= */
-
-/* Keyframes muncul (fade) yang lebih cepat */
-@keyframes pigeonFade {
-    0% { opacity: 0; }
-    100% { opacity: 0.9; }
-}
-
-@keyframes pigeonFlySmooth {
-    /* --- MULAI: DARI KIRI LUAR (Hadap Kanan) --- */
+/* 3. Rute Kupu-kupu 2: Menyebar ke KANAN ATAS (Wow) */
+@keyframes spreadRightWow {
     0% {
-        top: 35%;
-        left: -20%;
-        transform: scaleX(1) rotate(15deg);
+        top: 70%;
+        left: 50%;
+        transform: rotate(0deg); /* Hinggap */
     }
-    
-    /* --- TENGAH 1: DI ATAS NAMA (Mulus Lewat) --- */
-    25% {
+    15% {
+        top: 60%;
+        left: 60%;
+        transform: rotate(15deg); /* Mulai terbang nanjak */
+    }
+    40% {
+        top: 35%;
+        left: 85%;
+        transform: rotate(-10deg); /* Meliuk di kanan atas */
+    }
+    60% {
+        top: 15%;
+        left: 70%;
+        transform: rotate(5deg); /* Muter di pojok kanan atas */
+    }
+    80% {
         top: 25%;
-        left: 50%;
-        transform: scaleX(1) rotate(0deg);
+        left: 115%;
+        transform: rotate(10deg); /* Keluar layar kanan */
     }
-    
-    /* --- AKHIR 1: KELUAR KANAN --- */
-    50% {
-        top: 35%;
-        left: 120%;
-        transform: scaleX(1) rotate(-15deg);
-    }
-    
-    /* ======================================= */
-    /* PENTING: PUTAR BALIK CEPAT DI BALIK LAYAR */
-    /* ======================================= */
-    
-    50.01% {
-        transform: scaleX(-1) rotate(-15deg);
-    }
-    
-    /* --- TENGAH 2: DI BAWAH NAMA (Mulus Lewat) --- */
-    75% {
-        top: 45%;
-        left: 50%;
-        transform: scaleX(-1) rotate(0deg);
-    }
-    
-    /* --- AKHIR 2: KEMBALI KE KIRI AWAL --- */
     100% {
-        top: 35%;
-        left: -20%;
-        transform: scaleX(-1) rotate(15deg);
+        top: 25%;
+        left: 115%;
+        transform: rotate(10deg); /* Sembunyi */
     }
 }
