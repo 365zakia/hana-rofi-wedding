@@ -831,96 +831,81 @@ p {
     overflow: hidden;
 }
 
-/* --- LOGIKA PERBANYAKAN (Swarms) --- */
+/* --- LOGIKA PERBANYAKAN BARU (PAKAI SVG) --- */
 .butterfly-swarm {
     position: absolute;
-    width: 35px; /* Ukuran kupu-kupu watercolor diperkecil */
+    width: 35px; /* Ukuran kupu-kupu diperkecil */
     height: 35px;
     background-image: url('kupu-kupu.png'); /* File kupu-kupu watercolor kamu */
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.9;
+    opacity: 0; /* Mulai dari pudar dulu */
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6)); /* Glow lembut */
     
-    /* --- TEKNIK BOX-SHADOW UNTUK PERBANYAKAN --- */
-    /* Kita bikin 10 "bayangan" kupu-kupu dengan rute terbang acak */
-    box-shadow: 
-        100px -200px rgba(255,255,255,0.7), /* Kupu 2 */
-        -150px -400px rgba(255,255,255,0.7), /* Kupu 3 */
-        50px -600px rgba(255,255,255,0.7), /* Kupu 4 */
-        -200px -800px rgba(255,255,255,0.7), /* Kupu 5 */
-        180px -100px rgba(255,255,255,0.7), /* Kupu 6 */
-        -50px -300px rgba(255,255,255,0.7), /* Kupu 7 */
-        120px -500px rgba(255,255,255,0.7), /* Kupu 8 */
-        -100px -700px rgba(255,255,255,0.7), /* Kupu 9 */
-        200px -900px rgba(255,255,255,0.7); /* Kupu 10 */
+    /* Titik kumpul awal: Tengah bawah */
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
     
     /* --- ANIMASI GABUNGAN: TERBANG SAT-SET & KEPAK --- */
-    /* 1. Terbang meliuk menyebar (flyMagicalSpread) */
-    /* 2. Kepak sayap super smooth (flap) */
     animation: 
-        flyMagicalSpread 12s linear infinite 0s, 
-        flap 0.1s linear infinite; /* Kepak sayap super cepet, bareng daun */
+        magicalSuddenFlow 10s linear infinite, /* Terbang & Meliuk, Tanpa Delay */
+        flap 0.15s linear infinite; /* Kepak sayap super cepet */
 }
 
-/* ========================================= */
-/* KEYFRAMES LOGIKA GERAKAN KUPU-KUPU      */
-/* ========================================= */
-
-/* 1. Rute Terbang Menari-nari Lincah (mengelilingi & menyebar) */
-@keyframes flyMagicalSpread {
+/* --- KEYFRAMES RUTE TERBANG MENYELURUH --- */
+@keyframes magicalSuddenFlow {
     0% {
-        top: 60%; /* Mulai dari tengah bawah */
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(0deg) scale(0.1);
         opacity: 0;
+        transform: translate(-50%, -50%) scale(0.1) rotate(0deg);
     }
-    5% {
+    10% {
         opacity: 0.9;
-        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
     }
     25% {
         top: 30%;
         left: 20%; /* Meliuk ke kiri atas */
-        transform: translate(-50%, -50%) rotate(-15deg) scale(1.1);
+        transform: translate(-50%, -50%) scale(1.1) rotate(-15deg);
     }
     50% {
         top: 60%;
         left: 80%; /* Meliuk ke kanan tengah */
-        transform: translate(-50%, -50%) rotate(10deg) scale(1.2);
+        transform: translate(-50%, -50%) scale(1.2) rotate(10deg);
     }
     75% {
         top: 25%;
         left: 50%; /* Tengah agak atas, kumpul lagi */
-        transform: translate(-50%, -50%) rotate(0deg) scale(1);
-    }
-    85% {
-        top: 15%;
-        left: -10%; /* Keluar layar kiri */
-        transform: translate(-50%, -50%) rotate(-30deg) scale(0.8);
-    }
-    95% {
-        top: 20%;
-        left: 110%; /* Keluar layar kanan */
-        transform: translate(-50%, -50%) rotate(30deg) scale(0.8);
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
     }
     100% {
         top: -10%; /* Terbang lurus ke atas angkasa */
         left: 50%;
-        transform: translate(-50%, -50%) rotate(0deg) scale(0.1);
+        transform: translate(-50%, -50%) scale(0.1) rotate(0deg);
         opacity: 0;
     }
 }
 
-/* 2. Kepak Sayap (Flap) - Trik Super Smooth & Wow */
+/* --- KEYFRAMES KEPAK SAYAP --- */
 @keyframes flap {
-    0% {
-        transform: scaleY(1); /* Sayap Mekar */
-    }
-    50% {
-        transform: scaleY(0.1); /* Sayap Kuncup (Cuma 10% tinggi) */
-    }
-    100% {
-        transform: scaleY(1); /* Sayap Mekar Kembali */
-    }
+    0% { transform: scaleY(1); }
+    50% { transform: scaleY(0.1); }
+    100% { transform: scaleY(1); }
+}
+
+/* --- TEKNIK PERBANYAKAN SVG UNTUK SELURUH KUPU-KUPU --- */
+/* Kita panggil file SVG yang berisi 10 kupu-kupu menari acak */
+.butterfly-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Ganti 'kupu-kupu-swarm.svg' dengan file SVG kamu nanti */
+    background-image: url('kupu-kupu-swarm.svg');
+    background-size: cover;
+    background-repeat: repeat;
+    pointer-events: none;
+    opacity: 0.6; /* Kupu-kupu bayangan lebih pudar */
 }
