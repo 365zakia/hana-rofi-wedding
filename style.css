@@ -891,7 +891,100 @@ p {
         top: 40%;
         left: -20%;
         transform: scaleX(-1) rotate(0deg);
-    }
+    }/* ========================================= */
+/* ANIMASI BURUNG MUNCUL BARENG DAUN (HAL 1) */
+/* ========================================= */
+
+.pigeon-pair {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1; 
 }
+
+.pigeon-pair::before,
+.pigeon-pair::after {
+    content: "";
+    position: absolute;
+    width: 60px; 
+    height: 60px;
+    background-image: url('syahdu-bird.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* GANTI OPACITY AWAL JADI LANGSUNG 0.9 (LANGSUNG MUNCUL) */
+    opacity: 0.9; 
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
+
+    /* --- SEMUA DELAY UBAH JADI 0s --- */
+    animation: 
+        pigeonFade 0.5s ease forwards 0s, /* 0s: Langsung Jalan */
+        pigeonFlySmooth 5s linear infinite 0s; /* 0s: Langsung Jalan */
+}
+
+/* Jarak burung kedua diperdekat agar terlihat mengejar mulus */
+.pigeon-pair::after {
+    /* --- UBAH JEDA BURUNG KE-2 JADI LEBIH CEPAT --- */
+    animation-delay: 0.6s; /* Burung ke-2 muncul 0.6 detik setelah yang pertama */
+    width: 75px;
+    opacity: 0;
+}
+
+/* ========================================= */
+/* KEYFRAMES BARU: RUTE MENGALIR (FLOW)    */
+/* ========================================= */
+
+/* Keyframes muncul (fade) yang lebih cepat */
+@keyframes pigeonFade {
+    0% { opacity: 0; }
+    100% { opacity: 0.9; }
+}
+
+@keyframes pigeonFlySmooth {
+    /* --- MULAI: DARI KIRI LUAR (Hadap Kanan) --- */
+    0% {
+        top: 35%;
+        left: -20%;
+        transform: scaleX(1) rotate(15deg);
+    }
+    
+    /* --- TENGAH 1: DI ATAS NAMA (Mulus Lewat) --- */
+    25% {
+        top: 25%;
+        left: 50%;
+        transform: scaleX(1) rotate(0deg);
+    }
+    
+    /* --- AKHIR 1: KELUAR KANAN --- */
+    50% {
+        top: 35%;
+        left: 120%;
+        transform: scaleX(1) rotate(-15deg);
+    }
+    
+    /* ======================================= */
+    /* PENTING: PUTAR BALIK CEPAT DI BALIK LAYAR */
+    /* ======================================= */
+    
+    50.01% {
+        transform: scaleX(-1) rotate(-15deg);
+    }
+    
+    /* --- TENGAH 2: DI BAWAH NAMA (Mulus Lewat) --- */
+    75% {
+        top: 45%;
+        left: 50%;
+        transform: scaleX(-1) rotate(0deg);
+    }
+    
+    /* --- AKHIR 2: KEMBALI KE KIRI AWAL --- */
+    100% {
+        top: 35%;
+        left: -20%;
+        transform: scaleX(-1) rotate(15deg);
     }
 }
