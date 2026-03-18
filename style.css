@@ -251,15 +251,15 @@ p {
 
 .photo-frame-container { 
     position: relative; 
-    width: 180px; 
-    height: 180px; 
+    width: 250px; 
+    height: 250px; 
     margin: 0 auto 10px auto; 
 }
 
 .couple-photo-circle { 
-    width: 78%; 
-    height: 78%; 
-    object-fit: cover; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; 
     border-radius: 50%; 
     position: absolute; 
     top: 50%; 
@@ -675,7 +675,7 @@ p {
     font-weight: 700;
     font-size: 14px; /* Sesuai desain */
     color: #5d467c;
-    margin: 0 0 -12px 0; /* Jarak nama ke nomor rekening dirapatkan */
+    margin: 0 0 -14px 0; /* Jarak nama ke nomor rekening dirapatkan */
     text-transform: uppercase;
 }
 
@@ -691,9 +691,17 @@ p {
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     font-weight: 700;
+    color: #5d467c !important;
     margin-top: -2px
-    color: #5d467c;
     letter-spacing: 1.5px;
+    text-decoration: none !important; /* Hapus garis bawah biru */
+    display: inline-block;
+}
+
+/* Tambahan khusus buat deteksi link di browser HP */
+#norek a, #norek span {
+    color: inherit !important;
+    text-decoration: none !important;
 }
 
 #copy-toast {
