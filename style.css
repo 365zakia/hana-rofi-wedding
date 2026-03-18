@@ -204,19 +204,22 @@ p {
     width: 100%;
     min-height: 100vh;
     background-image: url('background-halaman-3.png'); /* Gambar kamu jadi latar */
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 60px 40px; /* Jarak agar teks tidak mentok pinggir */
+    padding: 0px 129px; /* Jarak agar teks tidak mentok pinggir */
+    margin-left: -102px;
     position: relative;
 }
 
 .quran-container {
-    width: 100%;
-    max-width: 320px;
-    text-align: center;
+    width: 93%;
+    max-width: 452px;
+    text-align: right;
+    margin-left: -89px;
+    margin-top: -398px;
     z-index: 5;
 }
 
@@ -225,7 +228,7 @@ p {
     font-size: 22px;
     line-height: 2.2;
     color: #5d467c;
-    margin-bottom: 15px;
+    margin-bottom: 34px;
     direction: rtl; /* Arah teks kanan ke kiri */
 }
 
@@ -233,8 +236,10 @@ p {
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     line-height: 1.8;
+    text-align: left;
+    margin-left: 28px;
     color: #5d467c;
-    font-style: italic;
+    font-style: normal;
     text-transform: none; /* Agar tidak kapital semua */
 }
 
@@ -242,6 +247,8 @@ p {
     font-family: 'Montserrat', sans-serif;
     font-size: 11px;
     font-weight: 700;
+    text-align: left;
+    margin-left: 30px;
     color: #889149;
     margin-top: 15px;
     letter-spacing: 2px;
