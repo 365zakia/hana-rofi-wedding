@@ -324,7 +324,7 @@ p {
 
 .couple-desc { 
     font-family: 'Montserrat', sans-serif; 
-    font-size: 13px; 
+    font-size: 11px; 
     color: #f3eadb; 
     line-height: 1.6; 
     text-transform: none; /* Biar nggak kapital semua */
@@ -332,7 +332,7 @@ p {
 }
 
 .and-symbol { 
-    font-size: 55px; 
+    font-size: 58px; 
     color: #f3eadb; 
     margin: 20px 0; 
     font-family: 'Montserrat', sans-serif; 
@@ -747,6 +747,8 @@ p {
     font-size: 10px;
     line-height: 1.6;
     color: #5d467c;
+    width: 100%;       /* Tambahkan ini: agar dia mengambil seluruh lebar kontainer */
+    text-align: center;
     text-transform: none;
     letter-spacing: 0.5px;
     margin: 0; /* Menghapus margin bawaan agar rapat */
