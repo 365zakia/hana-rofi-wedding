@@ -316,7 +316,7 @@ p {
 
 .couple-name { 
     font-family: 'Great Vibes', cursive !important; 
-    font-size: 45px; 
+    font-size: 47px; 
     color: #f3eadb; 
     margin: 10px 0; 
     font-weight: normal; 
@@ -324,7 +324,7 @@ p {
 
 .couple-desc { 
     font-family: 'Montserrat', sans-serif; 
-    font-size: 15px; 
+    font-size: 13px; 
     color: #f3eadb; 
     line-height: 1.6; 
     text-transform: none; /* Biar nggak kapital semua */
@@ -335,7 +335,7 @@ p {
     font-size: 55px; 
     color: #f3eadb; 
     margin: 20px 0; 
-    font-family: 'Great Vibes', cursive; 
+    font-family: 'Montserrat', sans-serif; 
 }
 
 .anim-page4 { 
@@ -415,7 +415,7 @@ p {
 .event-day, 
 .event-time { 
     font-family: 'Montserrat', sans-serif; 
-    font-size: 11px; 
+    font-size: 12px; 
     letter-spacing: 2px; 
     color: #5d467c; 
     margin: 0; 
