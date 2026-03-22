@@ -213,7 +213,7 @@
         const norekText = document.getElementById("norek").innerText;
         const toast = document.getElementById("copy-toast");
         navigator.clipboard.writeText(norekText).then(() => {
-            toast.innerText = "Tersalin! ✨";
+            toast.innerText = "Tersalin!";
             setTimeout(() => { toast.innerText = "Salin"; }, 2000);
         });
     }
