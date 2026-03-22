@@ -211,10 +211,11 @@ p {
     flex-direction: column;
     background-position: center;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 20px;
-    padding-bottom: 150px;
+    padding-top: 80px
+    padding-bottom: 20px;
     position: relative;
     box-sizing: border-box;
 }
@@ -222,7 +223,7 @@ p {
 .quran-container {
     width: 100%;
     max-width: 350px;
-    margin-top: 2vh;
+    margin-top: 0vh;
     z-index: 5;
     display: flex;
     flex-direction: column;
