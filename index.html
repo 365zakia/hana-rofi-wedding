@@ -53,28 +53,37 @@
     </section>
 
     <!-- SECTION 4: PROFIL (Ditambah loading lazy) -->
-    <section class="page-4 hidden">
-        <div class="page4-content">
-            <p class="invite-text-page4 anim-page4">Kami mengundang Bapak/Ibu/Saudara/i untuk hadir ke acara pernikahan kami :</p>
-            <div class="couple-main-wrapper">
-                <div class="couple-profile anim-page4">
-                    <div class="photo-frame-container"><img src="hana.webp" class="couple-photo-circle" loading="lazy"></div>
-                    <div class="couple-text-data">
-                        <h2 class="couple-name">Hana Mianti</h2>
-                        <p class="couple-desc">Putri dari Bapak Prasetyo Handoko<br>dan Ibu Kristiana Irda M</p>
-                    </div>
+    <!-- SECTION 4: PROFIL -->
+<section class="page-4 hidden">
+    <div class="page4-content">
+        <p class="invite-text-page4 anim-page4">Kami mengundang Bapak/Ibu/Saudara/i untuk hadir ke acara pernikahan kami :</p>
+        <div class="couple-main-wrapper">
+            <!-- Profil Hana -->
+            <div class="couple-profile anim-page4">
+                <div class="photo-frame-container">
+                    <img src="hana.webp" class="couple-photo-circle" loading="lazy">
                 </div>
-                <div class="and-symbol anim-page4">&</div>
-                <div class="couple-profile anim-page4">
-                    <div class="photo-frame-container"><img src="rofi.webp" class="couple-photo-circle" loading="lazy"></div>
-                    <div class="couple-text-data">
-                        <h2 class="couple-name">M. Firdaus Nur Rofi</h2>
-                        <p class="couple-desc">Putra dari Bapak Sujadi<br>dan Ibu Ismi Nurhidayati</p>
-                    </div>
+                <div class="couple-text-data anim-page4"> <!-- Tambah anim di sini -->
+                    <h2 class="couple-name">Hana Mianti</h2>
+                    <p class="couple-desc">Putri dari Bapak Prasetyo Handoko<br>dan Ibu Kristiana Irda M</p>
+                </div>
+            </div>
+
+            <div class="and-symbol anim-page4">&</div>
+
+            <!-- Profil Rofi -->
+            <div class="couple-profile anim-page4">
+                <div class="photo-frame-container">
+                    <img src="rofi.webp" class="couple-photo-circle" loading="lazy">
+                </div>
+                <div class="couple-text-data anim-page4"> <!-- Tambah anim di sini -->
+                    <h2 class="couple-name">M. Firdaus Nur Rofi</h2>
+                    <p class="couple-desc">Putra dari Bapak Sujadi<br>dan Ibu Ismi Nurhidayati</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- SECTION 5: ACARA (Ditambah loading lazy) -->
     <section class="page-5 hidden">
@@ -103,36 +112,44 @@
     </section>
 
     <!-- SECTION 6: DOA & UCAPAN (Ditambah loading lazy) -->
-    <section class="wishes-section hidden">
-        <h2 class="title-wish anim-wish">Doa & Ucapan</h2>
-        <div class="ucapan-wrapper anim-frame">
-            <img src="frame-ucapan.webp" class="frame-ucapan" loading="lazy">
-            <img src="petal-2.webp" class="petal-ucapan bunga-kiri" loading="lazy">
-            <img src="petal-2.webp" class="petal-ucapan bunga-kanan" loading="lazy">
-            <div class="purple-flower-icon anim-frame delay-1">
-                <img src="bunga-ungu.webp" alt="Ikon Bunga Ungu" loading="lazy">
-            </div>
-            <form id="wish-form">
-                <input type="text" id="nama" placeholder="Nama" required>
-                <textarea id="ucapan" placeholder="Beri Doa & Ucapan" required></textarea>
-                <div class="rsvp-group">
-                    <p class="label-rsvp">Konfirmasi Kehadiran</p>
-                    <div class="rsvp-options">
-                        <label class="rsvp-item">
-                            <input type="radio" name="kehadiran" value="Hadir" required>
-                            <span class="rsvp-btn">Ya</span>
-                        </label>
-                        <label class="rsvp-item">
-                            <input type="radio" name="kehadiran" value="Tidak Hadir">
-                            <span class="rsvp-btn">Tidak</span>
-                        </label>
-                    </div>
-                </div>
-                <button type="submit" class="btn-kirim">Kirim</button>
-                <p id="status"></p>
-            </form>
+   <!-- SECTION 6: DOA & UCAPAN -->
+<section class="wishes-section hidden">
+    <!-- Judul dengan animasi -->
+    <h2 class="title-wish anim-wish">Doa & Ucapan</h2>
+    
+    <div class="ucapan-wrapper anim-frame">
+        <img src="frame-ucapan.webp" class="frame-ucapan" loading="lazy">
+        <img src="petal-2.webp" class="petal-ucapan bunga-kiri" loading="lazy">
+        <img src="petal-2.webp" class="petal-ucapan bunga-kanan" loading="lazy">
+        
+        <!-- Ikon bunga ungu -->
+        <div class="purple-flower-icon anim-frame">
+            <img src="bunga-ungu.webp" alt="Ikon Bunga Ungu" loading="lazy">
         </div>
-    </section>
+
+        <!-- Form dengan animasi fade up tipis -->
+        <form id="wish-form" class="anim-wish" style="transition-delay: 0.6s;">
+            <input type="text" id="nama" placeholder="Nama" required>
+            <textarea id="ucapan" placeholder="Beri Doa & Ucapan" required></textarea>
+            
+            <div class="rsvp-group">
+                <p class="label-rsvp">Konfirmasi Kehadiran</p>
+                <div class="rsvp-options">
+                    <label class="rsvp-item">
+                        <input type="radio" name="kehadiran" value="Hadir" required>
+                        <span class="rsvp-btn">Ya</span>
+                    </label>
+                    <label class="rsvp-item">
+                        <input type="radio" name="kehadiran" value="Tidak Hadir">
+                        <span class="rsvp-btn">Tidak</span>
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn-kirim">Kirim</button>
+            <p id="status"></p>
+        </form>
+    </div>
+</section>
 
     <!-- SECTION 7: GIFT (Ditambah loading lazy) -->
     <section class="gift-section hidden">
