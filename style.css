@@ -26,7 +26,7 @@ body {
 .hero {
     height: 100vh;
     width: 100%;
-    background-image: url('background.png');
+    background-image: url('background.webp');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -120,7 +120,7 @@ p {
     position: relative; 
     width: 100%; 
     min-height: 100vh;
-    background-image: url('background-halaman-2.png');
+    background-image: url('background-halaman-2.webp');
     background-size: cover; 
     background-position: center;
     overflow: hidden; 
@@ -206,7 +206,7 @@ p {
 .page-3 {
     width: 100%;
     min-height: 100vh;
-    background-image: url('background-halaman-3.png'); /* Gambar kamu jadi latar */
+    background-image: url('background-halaman-3.webp');
     background-size: cover;
     flex-direction: column;
     background-position: center;
@@ -222,7 +222,7 @@ p {
 .quran-container {
     width: 100%;
     max-width: 350px;
-    margin-top: 15vh;        /* TAMBAHKAN INI: Jarak teks dari atas layar (15% dari tinggi layar) */
+    margin-top: 15vh;
     z-index: 5;
     display: flex;
     flex-direction: column;
@@ -233,8 +233,8 @@ p {
     font-size: 22px;
     line-height: 2.2;
     color: #5d467c;
-    direction: rtl;      /* Teks berjalan dari kanan ke kiri */
-    text-align: right;   /* RATA KANAN (Persis maumu) */
+    direction: rtl;
+    text-align: right;
     margin-bottom: 25px;
 }
 
@@ -243,9 +243,9 @@ p {
     font-size: 11px;
     line-height: 1.8;
     color: #5d467c;
-    text-align: left;    /* RATA KIRI (Persis maumu) */
+    text-align: left;
     text-transform: none;
-    margin: 0;           /* Hapus semua margin kiri yang tadi manual */
+    margin: 0;
 }
 
 .surah-name {
@@ -253,7 +253,7 @@ p {
     font-size: 11px;
     font-weight: 700;
     color: #889149;
-    text-align: left;    /* Nama surah ikut rata kiri di bawah arti */
+    text-align: left;
     margin-top: 15px;
     letter-spacing: 2px;
 }
@@ -262,7 +262,7 @@ p {
 .page-4 {
     width: 100%; 
     min-height: 100vh;
-    background-image: url('background-halaman-4.png');
+    background-image: url('background-halaman-4.webp');
     background-size: cover; 
     background-position: center;
     display: flex; 
@@ -283,7 +283,7 @@ p {
     color: #f3eadb; 
     margin-bottom: 40px;
     margin-top: 115px;
-    text-transform: none; /* Biar nggak kapital semua */
+    text-transform: none;
     font-weight: bold;
     line-height: 1.6;  
 }
@@ -327,7 +327,7 @@ p {
     font-size: 11px; 
     color: #f3eadb; 
     line-height: 1.6; 
-    text-transform: none; /* Biar nggak kapital semua */
+    text-transform: none;
     font-weight: bold; 
 }
 
@@ -353,7 +353,7 @@ p {
 .page-5 {
     width: 100%; 
     min-height: 40vh; 
-    background-image: url('background-halaman-5.png');
+    background-image: url('background-halaman-5.webp');
     background-size: 100% auto; 
     background-position: top center; 
     background-repeat: no-repeat;
@@ -480,7 +480,7 @@ p {
     position: relative; 
     width: 100%; 
     min-height: 99vh; 
-    background-image: url('background-halaman-6.png');
+    background-image: url('background-halaman-6.webp');
     background-size: contain; 
     background-position: center; 
     background-repeat: no-repeat;
@@ -493,11 +493,10 @@ p {
     
 }
 
-/* Warna saat tombol sedang mengirim */
 .btn-kirim:disabled {
-    background: #a195b9 !important; /* Ungu yang lebih muda/pucat */
+    background: #a195b9 !important;
     cursor: not-allowed;
-    animation: none; /* Berhenti berdenyut saat mengirim */
+    animation: none;
 }
 .title-wish { 
     font-family: 'Great Vibes', cursive; 
@@ -540,7 +539,7 @@ p {
 }
 
 .rsvp-item input {
-    display: none; /* Sembunyikan bulatan radio asli */
+    display: none;
 }
 
 .rsvp-btn {
@@ -556,9 +555,8 @@ p {
     transition: all 0.3s ease;
 }
 
-/* Warna saat tombol dipilih */
 .rsvp-item input:checked + .rsvp-btn {
-    background: #889149; /* Warna hijau senada tema kado */
+    background: #889149;
     color: white;
     border-color: #889149;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -591,36 +589,30 @@ p {
     margin-left: -95px;
 }
 
-/* Aturan dasar untuk kedua bunga */
 .petal-ucapan { 
     position: absolute; 
     width: 110px; 
     animation: petalPulse 2.5s infinite; 
-    z-index: 5; /* Pastikan di atas frame */
+    z-index: 5;
 }
 
-/* Posisi Bunga Kiri */
 .bunga-kiri {
     left: -70px; 
     top: 512px; 
 }
 
-/* Posisi Bunga Kanan */
 .bunga-kanan {
-    right: 14px; /* Pakai right biar nempel ke kanan */
+    right: 14px; 
     top: 512px; 
-    transform: scaleX(-1); /* Efek cermin biar bunganya hadap ke dalam */
+    transform: scaleX(-1);
 }
 
-/* Animasi Pulse kamu tetap sama */
 @keyframes petalPulse { 
     0% { transform: scale(1); }
     50% { transform: scale(1.08); }
     100% { transform: scale(1); }
 }
 
-/* PENTING: Jika pakai transform di bunga-kanan, 
-   animasi pulse-nya perlu sedikit penyesuaian agar tidak bentrok */
 .bunga-kanan {
     animation: petalPulseKanan 2.5s infinite;
 }
@@ -671,11 +663,11 @@ p {
 
 
 
-/* --- HALAMAN 7 : GIFT SECTION (SUSUNAN ULANG JARAK & ANIMASI) --- */
+/* --- HALAMAN 7 : GIFT SECTION --- */
 .gift-section {
     width: 100%;
     min-height: 100vh;
-    background-image: url('background-halaman-7.png');
+    background-image: url('background-halaman-7.webp');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -683,13 +675,13 @@ p {
     align-items: center;
     position: relative;
     padding: 20px;
-    overflow: hidden; /* Pastikan konten tidak luber */
+    overflow: hidden;
 }
 
 .gift-container {
     position: relative;
     width: 100%;
-    max-width: 440px; /* Sesuai kodemu */
+    max-width: 440px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -699,46 +691,38 @@ p {
     width: 100%;
     margin-right: 40px;
     z-index: 1;
-    /* Menghapus margin-left negatif agar frame tetap center */
 }
 
-/* --- Pengaturan Posisi Konten di Dalam Frame --- */
 .gift-content {
     position: absolute;
     z-index: 2;
-    width: 75%; /* Sedikit diperlebar agar teks leluasa */
-    top: 45%; /* Posisi vertikal di tengah frame */
+    width: 75%;
+    top: 45%;
     left: 34px;
-    transform: translateY(-50%); /* Sentralisasi vertikal sempurna */
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
-/* =========================================
-   KELOMPOK ATAS (Kado, Judul, Ucapan)
-   Merapetkan jarak antar elemen ini
-   ========================================= */
-
-/* Waduh pembungkus untuk Kelompok Atas */
 .top-gift-group {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 35px; /* Jarak pemisah ke kelompok bawah */
+    margin-bottom: 35px;
 }
 
 .icon-kado {
-    width: 70px; /* Sedikit disesuaikan */
-    margin-bottom: -20px; /* Jarak kado ke judul dirapatkan */
+    width: 70px;
+    margin-bottom: -20px;
 }
 
 .gift-title {
     font-family: 'Great Vibes', cursive !important;
     font-size: 40px;
     color: #5d467c;
-    margin: 0 0 12px 0; /* Jarak judul ke ucapan dirapatkan */
+    margin: 0 0 12px 0;
     font-weight: normal;
 }
 
@@ -747,40 +731,33 @@ p {
     font-size: 10px;
     line-height: 1.6;
     color: #5d467c;
-    width: 100%;       /* Tambahkan ini: agar dia mengambil seluruh lebar kontainer */
+    width: 100%;
     text-align: center;
     text-transform: none;
     letter-spacing: 0.5px;
-    margin: 0; /* Menghapus margin bawaan agar rapat */
-    padding: 0 5px; /* Sedikit padding agar tidak mepet pinggir */
+    margin: 0;
+    padding: 0 5px;
 }
 
-
-/* =========================================
-   KELOMPOK BAWAH (Logo, Nama, NoRek, Salin)
-   Merapetkan jarak antar elemen ini
-   ========================================= */
-
-/* Waduh pembungkus untuk Kelompok Bawah */
 .bank-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0; /* Kita atur jarak pakai margin individu saja */
+    gap: 0;
 }
 
 .bank-logo {
     width: 85px;
-    margin: -30px 0 -55px 0; /* Jarak logo ke nama dirapatkan */
+    margin: -30px 0 -55px 0;
     display: block;
 }
 
 .account-name {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 14px; /* Sesuai desain */
+    font-size: 14px;
     color: #5d467c;
-    margin: 0 0 -14px 0; /* Jarak nama ke nomor rekening dirapatkan */
+    margin: 0 0 -14px 0;
     text-transform: uppercase;
 }
 
@@ -789,7 +766,7 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px; /* Jarak nomor rekening ke tombol Salin sangat rapat */
+    gap: 5px;
 }
 
 #norek {
@@ -797,20 +774,19 @@ p {
     font-size: 18px;
     font-weight: 700;
     color: #5d467c !important;
-    margin-top: -2px
+    margin-top: -2px;
     letter-spacing: 1.5px;
-    text-decoration: none !important; /* Hapus garis bawah biru */
+    text-decoration: none !important;
     display: inline-block;
 }
 
-/* Tambahan khusus buat deteksi link di browser HP */
 #norek a, #norek span {
     color: inherit !important;
     text-decoration: none !important;
 }
 
 #copy-toast {
-    background: #f0edf5; /* Ungu muda lembut */
+    background: #f0edf5;
     color: #5d467c;
     font-family: 'Montserrat', sans-serif;
     font-size: 9px;
@@ -824,44 +800,34 @@ p {
     display: inline-block;
 }
 
-/* Efek saat diklik */
 .account-number-display:active {
     transform: scale(0.96);
 }
 
-
-/* =========================================
-   PENGATURAN ANIMASI MUNCUL
-   ========================================= */
-
-/* Base class animasi */
 .anim-gift {
     opacity: 0;
-    transform: translateY(20px); /* Angka lebih kecil agar gerakannya halus */
+    transform: translateY(20px);
     transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Saat class .show-gift ditambahkan di section */
 .show-gift .anim-gift {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Pengaturan Delay agar muncul bergantian */
-.delay-top { transition-delay: 0.2s; }  /* Kelompok Atas muncul dulu */
-.delay-bank { transition-delay: 1.0s; } /* Kelompok Bawah muncul belakangan */
+.delay-top { transition-delay: 0.2s; }
+.delay-bank { transition-delay: 1.0s; }
 
-/* --- FIX WARNA STATUS PESAN --- */
 #status {
     display: block;
     width: 100%;
     margin-top: 15px;
-    margin-left: 22px; /* Sesuaikan dengan margin tombol kirim kamu */
+    margin-left: 22px;
     font-family: 'Montserrat', sans-serif;
     font-size: 10px;
     font-weight: 700;
-    color: #f0edf5 !important; /* GANTI WARNA DI SINI (Putih Terang) */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Bayangan agar makin kontras */
+    color: #f0edf5 !important;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     text-align: center;
     line-height: 1.4;
 }
@@ -883,16 +849,15 @@ p {
 
 .butterfly {
     position: absolute;
-    width: 35px; /* Ukuran diperkecil dikit biar lebih manis kalau banyak */
+    width: 35px;
     height: 35px;
-    background-image: url('kupu-kupu.png');
+    background-image: url('kupu-kupu.webp');
     background-size: contain;
     background-repeat: no-repeat;
     opacity: 0;
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6));
 }
 
-/* --- ANIMASI UTAMA: FLOW & FLAP --- */
 @keyframes flyFlow {
     0% {
         opacity: 0;
@@ -901,7 +866,6 @@ p {
         transform: scale(0.3) rotate(0deg) scaleX(1);
     }
     15% { opacity: 0.9; }
-    /* Efek kepak sayap (scaleX) */
     25%, 75% { transform: scale(1) rotate(var(--rot)) scaleX(0.3); }
     50% { transform: scale(1.1) rotate(var(--rot)) scaleX(1); }
     100% {
@@ -912,49 +876,36 @@ p {
     }
 }
 
-/* --- VARIASI 10 RUTE TERBANG --- */
-
-/* Kupu 1-3: Dominan dari Bawah */
 .b1 { --startX: 20%; --startY: 100%; --endX: 80%; --endY: -10%; --rot: 30deg; animation: flyFlow 8s linear infinite; }
 .b2 { --startX: 80%; --startY: 100%; --endX: 20%; --endY: -10%; --rot: -30deg; animation: flyFlow 10s linear infinite; animation-delay: 2s; }
 .b3 { --startX: 50%; --startY: 100%; --endX: 50%; --endY: -20%; --rot: 0deg; animation: flyFlow 7s linear infinite; animation-delay: 4s; }
-
-/* Kupu 4-6: Dari Samping Kiri */
 .b4 { --startX: -10%; --startY: 20%; --endX: 110%; --endY: 50%; --rot: 90deg; animation: flyFlow 12s linear infinite; animation-delay: 1s; }
 .b5 { --startX: -10%; --startY: 70%; --endX: 110%; --endY: 30%; --rot: 70deg; animation: flyFlow 9s linear infinite; animation-delay: 5s; }
 .b6 { --startX: -10%; --startY: 50%; --endX: 80%; --endY: -10%; --rot: 45deg; animation: flyFlow 11s linear infinite; animation-delay: 3s; }
-
-/* Kupu 7-9: Dari Samping Kanan */
 .b7 { --startX: 110%; --startY: 40%; --endX: -10%; --endY: 60%; --rot: -90deg; animation: flyFlow 13s linear infinite; animation-delay: 0.5s; }
 .b8 { --startX: 110%; --startY: 10%; --endX: 20%; --endY: 110%; --rot: -120deg; animation: flyFlow 15s linear infinite; animation-delay: 6s; }
 .b9 { --startX: 110%; --startY: 80%; --endX: -10%; --endY: 20%; --rot: -60deg; animation: flyFlow 8.5s linear infinite; animation-delay: 2.5s; }
-
-/* Kupu 10: Special (Melintas Cepat di Tengah) */
 .b10 { --startX: 40%; --startY: 110%; --endX: 60%; --endY: -20%; --rot: 10deg; animation: flyFlow 6s linear infinite; animation-delay: 1.5s; }
+
 /* --- ANIMASI HALAMAN 3 --- */
 .anim-page3 {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 1.5s ease; /* Durasi 1.5 detik biar elegan */
+    transition: all 1.5s ease;
 }
 
-/* Class ini akan ditempelkan via JavaScript saat halaman 3 aktif */
 .show-page3 .anim-page3 {
     opacity: 1;
     transform: translateY(0);
 }
 
 /* --- PENGATURAN ANIMASI HALAMAN 6 & 7 --- */
-
-/* 1. Keadaan awal semua elemen (Sembunyi) */
 .anim-wish, .anim-frame, .anim-gift {
     opacity: 0;
     transform: translateY(30px);
     transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* 2. Trigger muncul untuk Halaman 6 (Doa) */
-/* Kita pakai class .show-wish yang akan dipicu JS */
 .show-wish .anim-wish {
     opacity: 1;
     transform: translateY(0);
@@ -962,10 +913,9 @@ p {
 .show-wish .anim-frame {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 0.4s; /* Frame muncul belakangan */
+    transition-delay: 0.4s;
 }
 
-/* 3. Trigger muncul untuk Halaman 7 (Kado) */
 .show-gift .anim-gift {
     opacity: 1;
     transform: translateY(0);
@@ -986,8 +936,8 @@ p {
     left: 50%;
     transform: translateX(-50%);
     z-index: 90;
-    width: 65px; /* Ukuran ikon, bisa kamu ubah sesuai selera */
-    top: 15%;    /* Jarak dari atas bingkai agar pas di tengah area kosong */
+    width: 65px;
+    top: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -999,7 +949,6 @@ p {
     object-fit: contain;
 }
 
-/* Delay tambahan agar bunga muncul setelah bingkai (frame) muncul */
 .delay-flower {
     transition-delay: 0.8s;
 }
