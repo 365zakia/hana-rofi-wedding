@@ -125,9 +125,9 @@ p {
     background-position: center;
     overflow: hidden; 
     display: flex; 
-    justify-content: center; 
+    justify-content: flex-start; 
     align-items: flex-start; 
-    text-align: center;
+    text-align: left;
 }
 
 .inner-content { 
@@ -217,7 +217,7 @@ p {
     justify-content: flex-start;
     align-items: center;
     padding: 20px;
-    padding-top: 80px
+    padding-top: 80px;
     padding-bottom: 20px;
     position: relative;
     box-sizing: border-box;
