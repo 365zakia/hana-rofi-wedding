@@ -222,7 +222,7 @@ p {
 .quran-container {
     width: 100%;
     max-width: 350px;
-    margin-top: 15vh;
+    margin-top: 2vh;
     z-index: 5;
     display: flex;
     flex-direction: column;
