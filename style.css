@@ -359,38 +359,42 @@ p {
 .show-page4 .anim-page4:nth-child(3) { transition-delay: 0.8s; }
 
 /* --- HALAMAN 5 : ACARA --- */
+/* --- HALAMAN 5 : ACARA --- */
 .page-5 {
     width: 100%; 
-    min-height: 100vh; /* Gunakan 100vh agar halaman memenuhi layar */
+    min-height: 100vh; /* Memastikan halaman ada tingginya */
     background-image: url('background-halaman-5.webp');
-    background-size: cover; /* Biar background utama selalu penuh */
+    background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat;
     display: flex; 
     justify-content: center; 
-    align-items: center; /* Konten acara otomatis di tengah */
-    text-align: center;
-    position: relative; 
-    overflow: hidden; /* Supaya frame bunga tidak bikin scroll ke samping */
+    align-items: center; 
+    position: relative; /* Anchor untuk bunga */
+    overflow: hidden;
 }
 
 .floral-frame { 
-    position: absolute; /* KUNCI: Membuat frame menempel ke background */
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; /* Memaksa tinggi frame sama dengan tinggi halaman */
-    object-fit: fill; /* Agar frame ditarik pas sesuai ukuran background dari Canva */
-    z-index: 1; 
+    position: absolute; 
+    /* Paksa nempel di semua sudut */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    
+    object-fit: fill; /* Ini yang bikin dia simetris kayak di Canva */
+    z-index: 1; /* Angka kecil supaya di bawah teks */
     pointer-events: none; 
     
-    /* Animasi tetap di sini */
+    /* Kembalikan animasi bawaanmu */
     opacity: 0; 
-    transform: scale(1.1); /* Aku ganti ke 1.1 agar efeknya 'zoom-out' halus */
+    transform: scale(0.9); 
     transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1); 
 }
 
-/* Trigger saat scroll masuk ke Halaman 5 */
+/* Pastikan class ini dipicu oleh JS-mu saat scroll */
 .show-page5 .floral-frame {
     opacity: 1;
     transform: scale(1);
@@ -398,10 +402,10 @@ p {
 
 .event-container { 
     position: relative; 
-    z-index: 2; /* Biar teks dan tombol ada di atas bunga */
-    width: 90%; 
-    max-width: 400px; 
-    /* Hapus top: 147px karena sudah diposisikan otomatis oleh flexbox di .page-5 */
+    z-index: 10; /* Angka besar supaya di ATAS bunga */
+    width: 100%; 
+    max-width: 400px;
+    /* Hapus top: 147px dulu, kita lihat dia ke tengah atau enggak */
 }
 
 .event-wrapper { 
